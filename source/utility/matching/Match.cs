@@ -1,10 +1,11 @@
 ﻿namespace code.utility.matching
 {
-    public static class Match<ItemToMatch>
+  public static class Match<ItemToMatch>
+  {
+    public static MatchBuilder<ItemToMatch, Property> with_attribute<Property>(
+      PropertyAccessor<ItemToMatch, Property> property_accessor)
     {
-        public static PropertyMatcher<ItemToMatch, Property> with_attribute<Property>(PropertySelector<ItemToMatch, Property> propertySelector)
-        {
-            return new PropertyMatcher<ItemToMatch, Property>(propertySelector);
-        }
+      return new MatchBuilder<ItemToMatch, Property>(property_accessor);
     }
+  }
 }
