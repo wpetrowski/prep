@@ -31,18 +31,23 @@ alias pki='thor paket:install'
 alias pkglv='thor paket:get_latest_version'
 alias pkup='thor paket:update'
 
+#Start the continuous tester
 alias ct='thor continuous_testing:run_it compile_units/all.compile'
+
+#Start growl
 alias grs='thor growl:start'
+
+#Re-expand the dev aliases
 alias exp='root;expands;source aliases'
+
+#Run all of the tests for the main compile unit, exclude slow and seed tags
 alias sr='thor specs:run_them compile_units/all.compile --flags=exclude:slow,seed'
+
+#Run all of the tests for the main compile unit
 alias sra='thor specs:run_them compile_units/all.compile'
 
 #Kill all runner processes
 alias tpkrp='thor processes:kill_runner_processes'
-
-#Test aliases
-alias tcs='thor tests:cs compile_units/all.compile'
-alias tjn='thor tests:node'
 
 #project aliases
 alias fb='thor git:fetch_branch $*'
@@ -52,7 +57,9 @@ alias smc='thor work:save_my_changes'
 alias sne='thor work:start_new_exercise'
 alias str='thor git:student_remotes'
 alias trash='thor git:trash'
-alias rf='bundle install && nuget update -self && nui && thor startup:configure'
+
+#Initialize the project
+alias rf='bundle install && thor paket:get_latest_version && thor paket:install && thor startup:configure'
 
 #Migration aliases
 alias clean='thor automation:clean'
