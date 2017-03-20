@@ -11,6 +11,7 @@
     {
       this.left = left;
       this.right = right;
+      this.compare = compare;
     }
 
     public bool matches(Item item)
