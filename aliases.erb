@@ -59,7 +59,7 @@ alias str='thor git:student_remotes'
 alias trash='thor git:trash'
 
 #Initialize the project
-alias rf='bundle install && thor paket:get_latest_version && thor paket:install && thor startup:configure'
+alias rf='bundle install && thor bootstrap:setup && thor startup:configure'
 
 #Migration aliases
 alias clean='thor automation:clean'
