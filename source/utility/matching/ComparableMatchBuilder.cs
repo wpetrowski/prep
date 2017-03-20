@@ -13,12 +13,12 @@ namespace code.utility.matching
 
     public IMatchA<Item> greater_than(Property value)
     {
-      return new CriteriaMatch<Item>(x => accessor(x).CompareTo(value) > 0);
+      return MatchFactory.CreateMatcher<Item>(x => accessor(x).CompareTo(value) > 0);
     }
 
     public IMatchA<Item> between(Property start, Property end)
     {
-      return new CriteriaMatch<Item>(x =>
+      return MatchFactory.CreateMatcher<Item>(x =>
       {
         var value = accessor(x);
         return value.CompareTo(start) >= 0 && value.CompareTo(end) <= 0;

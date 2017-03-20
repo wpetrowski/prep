@@ -11,7 +11,7 @@
 
     public IMatchA<ItemToMatch> equal_to(Property property)
     {
-      return new CriteriaMatch<ItemToMatch>(item => accessor(item).Equals(property));
+      return MatchFactory.CreateMatcher<ItemToMatch>(item => accessor(item).Equals(property));
     }
 
     public IMatchA<ItemToMatch> equal_to_any(params Property[] values)
