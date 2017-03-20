@@ -203,7 +203,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_by_pixar_or_disney = () =>
       {
-        var criteria = Movie.published_by(ProductionStudio.Pixar).or(Movie.published_by(ProductionStudio.Disney))
+        var criteria = Movie.published_by(ProductionStudio.Pixar).or(Movie.published_by(ProductionStudio.Disney));
 
         var results = sut.all().filter_using(criteria);
 
