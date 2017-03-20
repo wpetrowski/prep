@@ -8,7 +8,7 @@ namespace code.utility
     public static IEnumerable<Element> one_at_a_time<Element>(this IEnumerable<Element> items)
     {
       foreach (var element in items)
-         yield return element;
+        yield return element;
     }
 
     public static IEnumerable<Element> filter_using<Element>(this IEnumerable<Element> items, Criteria<Element> criteria)
@@ -26,14 +26,24 @@ namespace code.utility
       foreach (var element in items)
       {
         var result = visitor(element);
-        if (! result) return;
+        if (!result) return;
       }
     }
 
-
-    public static Value reduce<Element, Value>(this IEnumerable<Element> items, .....)
+    public static IMatchA<Element> reduce<Element, Value>(this IEnumerable<Value> items, IMatchA<Element> start,
+      ElementAccumulator<Element, Value> func)
     {
-      return value;
+      var result = start;
+
+      items.each(x =>
+      {
+        result = func(result, x);
+        return true;
+      });
+
+      return result;
     }
   }
+
+  public delegate IMatchA<Element> ElementAccumulator<Element, Value>(IMatchA<Element> accumulator, Value stepValue);
 }
