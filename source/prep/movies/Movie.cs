@@ -37,7 +37,7 @@ namespace code.prep.movies
 
     public static Criteria<Movie> published_by_pixar_or_disney()
     {
-      return x => x.production_studio == ProductionStudio.Pixar;
+      return x => published_by(ProductionStudio.Pixar)(x) || published_by(ProductionStudio.Disney)(x);
     }
   }
 }
