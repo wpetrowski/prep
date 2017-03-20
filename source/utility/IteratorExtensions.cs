@@ -30,14 +30,14 @@ namespace code.utility
       }
     }
 
-    public static IMatchA<Element> reduce<Element, Value>(this IEnumerable<Value> items, IMatchA<Element> start,
-      ElementAccumulator<Element, Value> func)
+    public static Element reduce<Element, Value>(this IEnumerable<Value> items, Element start,
+      ElementAccumulator<Element, Value> elementAccumulator)
     {
       var result = start;
 
       items.each(x =>
       {
-        result = func(result, x);
+        result = elementAccumulator(result, x);
         return true;
       });
 
@@ -45,5 +45,5 @@ namespace code.utility
     }
   }
 
-  public delegate IMatchA<Element> ElementAccumulator<Element, Value>(IMatchA<Element> accumulator, Value stepValue);
+  public delegate Element ElementAccumulator<Element, Value>(Element accumulator, Value stepValue);
 }
