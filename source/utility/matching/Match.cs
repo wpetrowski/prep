@@ -1,10 +1,11 @@
 ﻿namespace code.utility.matching
 {
-  public static class Match <T>
+  public static class Match<ItemToMatch>
   {
-    public static PropertyCompare<T> with_attribute(SelectProperty<T> selector)
+    public static .... with_attribute<PropertyType>(
+      PropertyAccessor<ItemToMatch, PropertyType> accessor)
     {
-       return new PropertyCompare<T>(selector);
     }
   }
+
 }
