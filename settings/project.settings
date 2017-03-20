@@ -15,7 +15,9 @@ def filter_libs(libs)
       /Machine.Fakes.Adap/ !~ file &&
       /Oracle/ !~ file &&
       /mono/i !~ file &&
-      /android/i !~ file
+      /android/i !~ file &&
+      /System\./i !~ file &&
+      /Moq/i !~ file
   end
 
   libs
@@ -105,7 +107,6 @@ configure({
 
   framework_references: [
     "System.dll",
-    "System.Runtime.dll",
   ],
 
   iis_express: {
