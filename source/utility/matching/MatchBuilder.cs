@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace code.utility.matching
 {
@@ -18,7 +20,14 @@ namespace code.utility.matching
 
     public IMatchA<ItemToMatch> equal_to_any(params Property[] values)
     {
-      throw new NotImplementedException();
+      return new CriteriaMatch<ItemToMatch>(item =>
+      {
+        foreach (var value in values)
+        {
+          if (accessor(item).Equals(value)) return true;
+        }
+        return false;
+      });
     }
   }
 }
