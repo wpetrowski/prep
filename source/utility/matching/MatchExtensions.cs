@@ -7,6 +7,11 @@
       return new OrMatch<Element>(left, right);
     }
 
+	  public static IMatchA<Element> and<Element>(this IMatchA<Element> left, IMatchA<Element> right)
+	  {
+		  return new AndMatch<Element>(left, right);
+	  }
+
     public static IMatchA<Element> not<Element>(this IMatchA<Element> to_negate)
     {
       return new NegatingMatch<Element>(to_negate);
