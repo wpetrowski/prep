@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using code.utility;
-using code.utility.matching;
 
 namespace code.prep.movies
 {
@@ -12,7 +11,6 @@ namespace code.prep.movies
     public MovieLibrary(IList<Movie> list_of_movies)
     {
       this.movies = list_of_movies;
-
     }
 
     public IEnumerable<Movie> all()
@@ -25,48 +23,6 @@ namespace code.prep.movies
       if (movies.Contains(movie)) return;
 
       movies.Add(movie);
-    }
-
-
-    public IEnumerable<Movie> all_movies_published_by_pixar()
-    {
-      foreach (var movie in movies)
-      {
-        if (movie.production_studio == ProductionStudio.Pixar)
-        {
-          yield return movie;
-        }
-      }
-    }
-
-    public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
-    {
-	    return movies.filter_using(new CriteriaMatch<Movie>(x => x.production_studio == ProductionStudio.Disney));
-    }
-
-    public IEnumerable<Movie> all_movies_not_published_by_pixar()
-    {
-	    return movies.filter_using(new IsPublishedBy(ProductionStudio.Pixar).not());
-    }
-
-    public IEnumerable<Movie> all_movies_published_after(int year)
-    {
-	    return movies.filter_using(new IsPublishedAfter(year));
-    }
-
-    public IEnumerable<Movie> all_movies_published_between_years(int startingYear, int endingYear)
-    {
-	    return movies.filter_using(new IsPublishedAfter(startingYear).and(new IsPublishedBefore(endingYear)));
-    }
-
-    public IEnumerable<Movie> all_kid_movies()
-    {
-        return movies.filter_using(new IsInGenre(Genre.kids));
-    }
-
-    public IEnumerable<Movie> all_action_movies()
-    {
-        return movies.filter_using(new IsInGenre(Genre.action));
     }
 
     public IEnumerable<Movie> sort_all_movies_by_title_descending()

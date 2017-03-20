@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace code.utility.matching
+﻿namespace code.utility.matching
 {
   public class MatchBuilder<ItemToMatch, Property>
   {
@@ -18,7 +16,13 @@ namespace code.utility.matching
 
     public IMatchA<ItemToMatch> equal_to_any(params Property[] values)
     {
-      return values.reduce((IMatchA<ItemToMatch>)new NeverMatches<ItemToMatch>(), (accumulator, step_value) => accumulator.or(equal_to(step_value)));
+      return values.reduce<IMatchA<ItemToMatch>, Property>(new NeverMatches<ItemToMatch>(),
+        (accumulator, step_value) => accumulator.or(equal_to(step_value)));
+    }
+
+    public IMatchA<ItemToMatch> not_equal_to(Property value)
+    {
+      return equal_to(value).not();
     }
   }
 }

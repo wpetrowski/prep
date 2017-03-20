@@ -31,13 +31,13 @@ namespace code.utility
     }
 
     public static Element reduce<Element, Value>(this IEnumerable<Value> items, Element start,
-      ElementAccumulator<Element, Value> elementAccumulator)
+      ElementAccumulator<Element, Value> element_accumulator)
     {
       var result = start;
 
       items.each(x =>
       {
-        result = elementAccumulator(result, x);
+        result = element_accumulator(result, x);
         return true;
       });
 
