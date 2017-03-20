@@ -18,7 +18,7 @@ namespace code.utility.matching
 
     public IMatchA<ItemToMatch> equal_to_any(params Property[] values)
     {
-      return values.reduce(new NeverMatches<ItemToMatch>(), (accumulator, stepValue) => accumulator.or(equal_to(stepValue)));
+      return values.reduce(new NeverMatches<ItemToMatch>(), (accumulator, step_value) => accumulator.or(equal_to(step_value)));
     }
   }
 }
