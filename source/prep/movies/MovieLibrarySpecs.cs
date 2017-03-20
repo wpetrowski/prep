@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using code.utility;
+using code.utility.matching;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.enumerables;
 using developwithpassion.specifications.assertions.type_specificity;
@@ -202,7 +203,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_by_pixar_or_disney = () =>
       {
-        var criteria = Movie.published_by_pixar_or_disney();
+        var criteria = Movie.published_by(ProductionStudio.Pixar).or(Movie.published_by(ProductionStudio.Disney))
 
         var results = sut.all().filter_using(criteria);
 
@@ -211,7 +212,9 @@ namespace code.prep.movies
 
       It finds_all_movies_not_published_by_pixar = () =>
       {
-        var results = sut.all_movies_not_published_by_pixar();
+        var criteria = Movie.published_by(ProductionStudio.Pixar).not();
+
+        var results = sut.all().filter_using(criteria);
 
         results.ShouldNotContain(cars, a_bugs_life);
       };

@@ -1,5 +1,4 @@
 using System;
-using code.utility;
 using code.utility.matching;
 
 namespace code.prep.movies
@@ -30,14 +29,15 @@ namespace code.prep.movies
       return title.GetHashCode();
     }
 
-    public static Criteria<Movie> published_by(ProductionStudio studio)
+    public static IMatchA<Movie> published_by(ProductionStudio studio)
     {
-      return x => x.production_studio == studio;
+      return new IsPublishedBy(studio);
     }
 
-    public static Criteria<Movie> published_by_pixar_or_disney()
+    public static IMatchA<Movie> in_genre(Genre genre)
     {
-      return x => published_by(ProductionStudio.Pixar)(x) || published_by(ProductionStudio.Disney)(x);
+      return new IsInGenre(genre);
     }
+
   }
 }
