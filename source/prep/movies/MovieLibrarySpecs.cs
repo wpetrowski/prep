@@ -194,7 +194,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_by_pixar = () =>
       {
-        var criteria = Movie.published_by(ProductionStudio.Pixar);
+        var criteria = Match<Movie>.with_attribute(x => x.production_studio).equal_to(ProductionStudio.Pixar);
 
         var results = sut.all().filter_using(criteria);
 

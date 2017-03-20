@@ -4,19 +4,19 @@
   {
     IMatchA<Item> left;
     IMatchA<Item> right;
-    public delegate bool Compare(bool condition1, bool condition2);
-    public Compare compare;
 
-    public BinaryMatch(IMatchA<Item> left, IMatchA<Item> right, Compare compare)
+    public BinaryMatchType binary_match_type;
+
+    public BinaryMatch(IMatchA<Item> left, IMatchA<Item> right, BinaryMatchType binary_match_type)
     {
       this.left = left;
       this.right = right;
-      this.compare = compare;
+      this.binary_match_type = binary_match_type;
     }
 
     public bool matches(Item item)
     {
-      return compare(left.matches(item), right.matches(item));
+      return binary_match_type(left.matches(item), right.matches(item));
     }
   }
 }
