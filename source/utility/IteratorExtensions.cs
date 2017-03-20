@@ -31,9 +31,15 @@ namespace code.utility
     }
 
 
-    public static Value reduce<Element, Value>(this IEnumerable<Element> items, .....)
+    public static IMatchA<Element> reduce<Element, Value>(this IEnumerable<Value> items, IMatchA<Element> start, ElementAccumulator<Element, Value> func)
     {
-      return value;
+		var result = start;
+	    foreach (var element in items)
+		    result = func(result, element);
+
+		return result;
     }
   }
+
+	public delegate IMatchA<Element> ElementAccumulator<Element, Value>(IMatchA<Element> accumulator, Value stepValue);
 }
