@@ -11,7 +11,7 @@ namespace code.utility
          yield return element;
     }
 
-    static IEnumerable<Element> filter_using<Element>(this IEnumerable<Element> items, Criteria<Element> criteria)
+    public static IEnumerable<Element> filter_using<Element>(this IEnumerable<Element> items, Criteria<Element> criteria)
     {
       foreach (var element in items) if (criteria(element)) yield return element;
     }

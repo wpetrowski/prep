@@ -2,18 +2,18 @@ using code.utility.matching;
 
 namespace code.prep.movies
 {
-	public class IsPublishedAfter : IMatchA<Movie>
-	{
-		private readonly int _year;
+  public class IsPublishedAfter : IMatchA<Movie>
+  {
+    int year;
 
-		public IsPublishedAfter(int year)
-		{
-			_year = year;
-		}
+    public IsPublishedAfter(int year)
+    {
+      this.year = year;
+    }
 
-		public bool matches(Movie item)
-		{
-			return item.date_published.Year > _year;
-		}
-	}
+    public bool matches(Movie item)
+    {
+      return item.date_published.Year > year;
+    }
+  }
 }

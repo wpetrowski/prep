@@ -41,7 +41,7 @@ namespace code.prep.movies
 
     public IEnumerable<Movie> all_movies_published_by_pixar_or_disney()
     {
-	    return movies.filter_using(new IsPublishedBy(ProductionStudio.Pixar).or(new IsPublishedBy(ProductionStudio.Disney)));
+	    return movies.filter_using(new CriteriaMatch<Movie>(x => x.production_studio == ProductionStudio.Disney));
     }
 
     public IEnumerable<Movie> all_movies_not_published_by_pixar()
