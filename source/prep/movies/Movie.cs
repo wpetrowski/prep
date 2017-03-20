@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using code.utility.matching;
 
 namespace code.prep.movies
@@ -39,5 +40,14 @@ namespace code.prep.movies
       return new IsInGenre(genre);
     }
 
+    public static IMatchA<Movie> published_after(int year)
+    {
+      return new IsPublishedAfter(year);
+    }
+
+    public static IMatchA<Movie> published_between(int start, int end)
+    {
+      return new IsPublishedBetween(start, end);
+    } 
   }
 }
