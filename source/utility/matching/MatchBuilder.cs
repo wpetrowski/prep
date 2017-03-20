@@ -18,11 +18,7 @@ namespace code.utility.matching
 
     public IMatchA<ItemToMatch> equal_to_any(params Property[] values)
     {
-	    IMatchA<ItemToMatch> result = new NoMatch<ItemToMatch>();
-	    foreach (var value in values)
-		    result = new OrMatch<ItemToMatch>(result, new CriteriaMatch<ItemToMatch>(x => x.Equals(value)));
-
-	    return result;
+      return values.reduce(new NeverMatches<ItemToMatch>(), (a, b) => a.or(equal_to(b))) ;
     }
   }
 }

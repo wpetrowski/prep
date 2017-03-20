@@ -20,5 +20,20 @@ namespace code.utility
     {
       return items.filter_using(criteria.matches);
     }
+
+    public static void each<Element>(this IEnumerable<Element> items, ElementVisitor<Element> visitor)
+    {
+      foreach (var element in items)
+      {
+        var result = visitor(element);
+        if (! result) return;
+      }
+    }
+
+
+    public static Value reduce<Element, Value>(this IEnumerable<Element> items, .....)
+    {
+      return value;
+    }
   }
 }
