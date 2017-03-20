@@ -2,10 +2,10 @@
 {
   public static class Match<ItemToMatch>
   {
-    public static .... with_attribute<PropertyType>(
-      PropertyAccessor<ItemToMatch, PropertyType> accessor)
+    public static MatchBuilder<ItemToMatch, Property> with_attribute<Property>(
+      PropertyAccessor<ItemToMatch, Property> property_accessor)
     {
+      return new MatchBuilder<ItemToMatch, Property>(property_accessor);
     }
   }
-
 }
