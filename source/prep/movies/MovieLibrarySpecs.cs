@@ -222,7 +222,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_after_a_certain_year = () =>
       {
-        var criteria = Match<Movie>.with_attribute(x => x.date_published.Year).greater_than(2004);
+        var criteria = Match<Movie>.with_attribute(x => x.date_published).greater_than(2004);
 
         var results = sut.all().filter_using(criteria);
 
