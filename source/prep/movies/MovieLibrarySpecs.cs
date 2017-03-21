@@ -261,7 +261,7 @@ namespace code.prep.movies
 
       It by_title_descending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.title, SortOrders.descending);
+        var comparer = Sort<Movie>.by_descending(x => x.title);
 
         var results = sut.all().sort_using(comparer);
 
@@ -272,7 +272,7 @@ namespace code.prep.movies
 
       It by_title_ascending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.title, SortOrders.ascending);
+        var comparer = Sort<Movie>.by(x => x.title);
 
         var results = sut.all().sort_using(comparer);
 
