@@ -1,7 +1,7 @@
 ﻿namespace code.utility.matching
 {
-  public interface IProvideAccessToMatchBuilders<in ItemToMatch, out Property>
+  public interface IProvideAccessToMatchBuilders<in ItemToMatch, out Property, out ItemToCreate>
   {
-    Criteria<ItemToMatch> create(Criteria<Property> value_matcher);
+    ItemToCreate create(Criteria<Property> value_matcher);
   }
 }

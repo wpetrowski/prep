@@ -1,6 +1,6 @@
 ﻿namespace code.utility.matching
 {
-  public class MatchingExtensionPoint<ItemToMatch, Property> : IProvideAccessToMatchBuilders<ItemToMatch, Property>
+  public class MatchingExtensionPoint<ItemToMatch, Property> : IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>>
   {
     IGetTheValueOfAProperty<ItemToMatch, Property> accessor { get; }
 
@@ -10,16 +10,16 @@
       this.accessor = accessor;
     }
 
-    public IProvideAccessToMatchBuilders<ItemToMatch, Property> not
+    public IProvideAccessToMatchBuilders<ItemToMatch, Property,Criteria<ItemToMatch>> not
     {
       get { return new NegatingMatchingExtensionPoint(this); }
     }
 
-    class NegatingMatchingExtensionPoint : IProvideAccessToMatchBuilders<ItemToMatch, Property>
+    class NegatingMatchingExtensionPoint : IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>>
     {
-      IProvideAccessToMatchBuilders<ItemToMatch, Property> original;
+      IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>> original;
 
-      public NegatingMatchingExtensionPoint(IProvideAccessToMatchBuilders<ItemToMatch, Property> original)
+      public NegatingMatchingExtensionPoint(IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>> original)
       {
         this.original = original;
       }
