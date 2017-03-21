@@ -28,9 +28,10 @@ namespace code.utility.matching
       return x => inclusive ? x.CompareTo(value) <= 0 : x.CompareTo(value) < 0;
     }
     
-    public static Criteria<Value> between<Value>(Value start, Value end, bool inclusive) where Value : IComparable<Value>
+    public static Criteria<Value> between<Value>(Value start, bool inclusiveStart, Value end, bool inclusiveEnd) where Value : IComparable<Value>
     {
-      return x => inclusive ? x.CompareTo(start) >= 0 && x.CompareTo(end) <= 0 : x.CompareTo(start) > 0 && x.CompareTo(end) < 0;
+      //return x => inclusive ? x.CompareTo(start) >= 0 && x.CompareTo(end) <= 0 : x.CompareTo(start) > 0 && x.CompareTo(end) < 0;
+      return before(end, inclusiveEnd).and(after(start, inclusiveStart));
     }
   }
 }
