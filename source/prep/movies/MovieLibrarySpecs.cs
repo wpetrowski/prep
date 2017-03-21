@@ -271,7 +271,9 @@ namespace code.prep.movies
 
       It by_title_ascending = () =>
       {
-        var results = sut.sort_all_movies_by_title_ascending();
+        var comparer = Sort<Movie>.@by(x => x.title);
+
+        var results = sut.all().sort_using(comparer);
 
         results.should().contain_only_in_order(a_bugs_life, cars, indiana_jones_and_the_temple_of_doom,
           pirates_of_the_carribean, shrek,
@@ -280,7 +282,9 @@ namespace code.prep.movies
 
       It by_date_published_descending = () =>
       {
-        var results = sut.sort_all_movies_by_date_published_descending();
+        var comparer = Sort<Movie>.by_descending(x => x.date_published);
+
+        var results = sut.all().sort_using(comparer);
 
         results.should().contain_only_in_order(theres_something_about_mary, shrek, yours_mine_and_ours, cars,
           pirates_of_the_carribean, a_bugs_life,
@@ -289,7 +293,9 @@ namespace code.prep.movies
 
       It by_date_published_ascending = () =>
       {
-        var results = sut.sort_all_movies_by_date_published_ascending();
+        var comparer = Sort<Movie>.by(x => x.date_published);
+
+        var results = sut.all().sort_using(comparer);
 
         results.should().contain_only_in_order(indiana_jones_and_the_temple_of_doom, a_bugs_life,
           pirates_of_the_carribean, cars, yours_mine_and_ours, shrek,
@@ -304,6 +310,15 @@ namespace code.prep.movies
         //Dreamworks
         //Universal
         //Disney
+        /*var comparer = Sort<Movie>.by(x => x.production_studio, 
+          ProductionStudio.MGM,
+          ProductionStudio.Pixar,
+          ProductionStudio.Dreamworks,
+          ProductionStudio.Universal,
+          ProductionStudio.Disney)
+          .then_by(x => x.date_published)*/
+
+        var results = sut.all().sort_using(comparer);
         var results = sut.sort_all_movies_by_movie_studio_and_year_published();
         /* should return a set of results 
                  * in the collection sorted by the rating of the production studio (not the movie rating) and year published. for this exercise you need to take the studio ratings

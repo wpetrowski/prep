@@ -8,10 +8,10 @@ namespace code.prep.movies
   {
     public static ICompareTwoItems<Item> by_descending<Property>(IGetTheValueOfAProperty<Item, Property> accessor) where Property : IComparable<Property>
     {
-      return (a, b) => accessor(b).CompareTo(accessor(a));
+      return (a, b) => -by(accessor)(a, b);
     }
 
-    public static ICompareTwoItems<Item> by_ascending<Property>(IGetTheValueOfAProperty<Item, Property> accessor) where Property : IComparable<Property>
+    public static ICompareTwoItems<Item> by<Property>(IGetTheValueOfAProperty<Item, Property> accessor) where Property : IComparable<Property>
     {
       return (a, b) => accessor(a).CompareTo(accessor(b));
     }
