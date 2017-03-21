@@ -12,7 +12,7 @@ namespace code.utility.matching
 
   public static class LessThanMatchingExtensions
   {
-    public static Criteria<Item> less_than<Item,Property>(this IProvideAccessToMatchBuilders<Item,Property> extension_point, Property value) where Property : IComparable<Property>
+    public static ReturnType less_than<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property,ReturnType> extension_point, Property value) where Property : IComparable<Property>
     {
       return extension_point.create(LessThan.value(value));
     }

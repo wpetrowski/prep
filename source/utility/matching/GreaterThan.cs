@@ -12,7 +12,7 @@ namespace code.utility.matching
 
   public static class GreaterThanMatchingExtensions
   {
-    public static Criteria<Item> greater_than<Item,Property>(this IProvideAccessToMatchBuilders<Item,Property> extension_point, Property value) where Property : IComparable<Property>
+    public static ReturnType greater_than<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, Property value) where Property : IComparable<Property>
     {
       return extension_point.create(GreaterThan.value(value));
     }

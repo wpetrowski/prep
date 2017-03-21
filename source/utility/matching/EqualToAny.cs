@@ -12,16 +12,14 @@ namespace code.utility.matching
 
   public static class EqualityMatchingExtensions
   {
-    public static Criteria<Item> equal_to<Item,Property>(this IProvideAccessToMatchBuilders<Item,Property> extension_point, Property property)
+    public static ReturnType equal_to<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, Property property)
     {
       return extension_point.equal_to_any(property);
     }
 
-    public static Criteria<Item> equal_to_any<Item,Property>(this IProvideAccessToMatchBuilders<Item,Property> extension_point, params Property[] values)
+    public static ReturnType equal_to_any<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, params Property[] values)
     {
       return extension_point.create(EqualToAny.values(values));
     }
-
-    
   }
 }
