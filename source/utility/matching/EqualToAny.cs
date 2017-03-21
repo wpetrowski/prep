@@ -22,6 +22,11 @@ namespace code.utility.matching
       return extension_point.create(EqualToAny.values(values));
     }
 
-    
+    public static IEnumerable<Item> equal_to_any<Item,Property>(this IProvideAccessToFilterBuilders<Item,Property> extension_point, params Property[] values)
+    {
+        var criteria = extension_point.create_criteria(EqualToAny.values(values));
+
+        return extension_point.filter(criteria);
+    }
   }
 }
