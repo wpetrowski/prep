@@ -271,7 +271,7 @@ namespace code.prep.movies
 
       It by_title_ascending = () =>
       {
-        var comparer = Sort<Movie>.@by(x => x.title);
+        var comparer = Sort<Movie>.by(x => x.title);
 
         var results = sut.all().sort_using(comparer);
 
@@ -310,16 +310,15 @@ namespace code.prep.movies
         //Dreamworks
         //Universal
         //Disney
-        /*var comparer = Sort<Movie>.by(x => x.production_studio, 
+        var comparer = Sort<Movie>.by(x => x.production_studio,
           ProductionStudio.MGM,
           ProductionStudio.Pixar,
           ProductionStudio.Dreamworks,
           ProductionStudio.Universal,
           ProductionStudio.Disney)
-          .then_by(x => x.date_published)*/
+          .then_by(x => x.date_published);
 
         var results = sut.all().sort_using(comparer);
-        var results = sut.sort_all_movies_by_movie_studio_and_year_published();
         /* should return a set of results 
                  * in the collection sorted by the rating of the production studio (not the movie rating) and year published. for this exercise you need to take the studio ratings
                  * into effect, which means that you first have to sort by movie studio (taking the ranking into account) and then by the
