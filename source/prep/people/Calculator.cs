@@ -15,7 +15,6 @@ namespace code.prep.people
     public Calculator(IDbConnection connection)
     {
       this.connection = connection;
-      this.connection.Open();
     }
 
     public int add(int i, int i1)
