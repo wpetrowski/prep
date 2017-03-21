@@ -17,10 +17,10 @@ namespace code.prep.movies
     }
   }
 
-  public class SortOrder
+  public static class SortOrder
   {
-    public static SortStrategy ascending = a => a;
-    public static SortStrategy descending = a => -a;
+    public static readonly SortStrategy ascending = a => a;
+    public static readonly SortStrategy descending = a => -a;
   }
 
   public delegate int SortStrategy(int value);
