@@ -27,5 +27,10 @@ namespace code.prep.movies
     {
       return title.GetHashCode();
     }
+
+    public override string ToString()
+    {
+      return title;
+    }
   }
 }

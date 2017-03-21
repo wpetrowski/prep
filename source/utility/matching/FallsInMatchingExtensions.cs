@@ -18,19 +18,19 @@ namespace code.utility.matching
 
   public static class Range
   {
-    public static Criteria<Value> after<Value>(Value value) where Value : IComparable<Value>
+    public static Criteria<Value> after<Value>(Value value, bool inclusive) where Value : IComparable<Value>
     {
-      return x => x.CompareTo(value) > 0;
+      return x => inclusive ? x.CompareTo(value) >= 0 : x.CompareTo(value) > 0;
     }
     
-    public static Criteria<Value> before<Value>(Value value) where Value : IComparable<Value>
+    public static Criteria<Value> before<Value>(Value value, bool inclusive) where Value : IComparable<Value>
     {
-      return x => x.CompareTo(value) < 0;
+      return x => inclusive ? x.CompareTo(value) <= 0 : x.CompareTo(value) < 0;
     }
     
-    public static Criteria<Value> between<Value>(Value start, Value end) where Value : IComparable<Value>
+    public static Criteria<Value> between<Value>(Value start, Value end, bool inclusive) where Value : IComparable<Value>
     {
-      return x => x.CompareTo(start) >= 0 && x.CompareTo(end) <= 0;
+      return x => inclusive ? x.CompareTo(start) >= 0 && x.CompareTo(end) <= 0 : x.CompareTo(start) > 0 && x.CompareTo(end) < 0;
     }
   }
 }
