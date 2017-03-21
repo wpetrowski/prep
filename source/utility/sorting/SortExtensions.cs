@@ -28,5 +28,16 @@ namespace code.utility.sorting
     {
         return then_by(previous_comparer, accessor, SortOrders.@descending);
     }
-  }
+
+    public static ICompareTwoItems<Item> then_by<Item, Property>(this ICompareTwoItems<Item> previous_comparer,
+      IGetTheValueOfAProperty<Item, Property> accessor, params Property[] sort_order)
+      where Property : IComparable<Property>
+        {
+            return (a, b) =>
+            {
+                var previous_result = previous_comparer(a, b);
+                return previous_result == 0 ? Sort<Item>.by(accessor, sort_order)(a, b) : previous_result;
+            };
+        }
+    }
 }
