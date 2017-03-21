@@ -10,7 +10,7 @@ namespace code.utility.matching
     {
       var matcher = builder(value);
 
-      return inclusive ? matcher.and(EqualToAny.values(value)) : matcher;
+      return inclusive ? matcher.or(EqualToAny.values(value)) : matcher;
     }
 
     public static Criteria<Value> after<Value>(Value value, bool inclusive) where Value : IComparable<Value>
@@ -26,7 +26,7 @@ namespace code.utility.matching
     public static Criteria<Value> between<Value>(Value start, bool inclusive_start, Value end, bool inclusive_end)
       where Value : IComparable<Value>
     {
-      return before(end, inclusive_end).and(after(start, inclusive_start));
+      return after(start, inclusive_start).and(before(end, inclusive_end));
     }
   }
 }
