@@ -9,7 +9,7 @@ using developwithpassion.specifications.assertions.type_specificity;
 using developwithpassion.specifications.extensions;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 using Machine.Specifications;
-using Rhino.Mocks;
+
 
 namespace code.prep.movies
 {
@@ -222,7 +222,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_after_a_certain_year = () =>
       {
-        var criteria = Match<Movie>.with_attribute(x => x.date_published).greater_than(2004);
+        var criteria = Match<Movie>.with_attribute(x => x.date_published.Year).falls_in(Range.from(2004).exclusive());
 
         var results = sut.all().filter_using(criteria);
 
@@ -231,7 +231,7 @@ namespace code.prep.movies
 
       It finds_all_movies_published_between_a_certain_range_of_years = () =>
       {
-        var criteria = Match<Movie>.with_attribute(x => x.date_published.Year).between(1982,2003);
+        var criteria = Match<Movie>.with_attribute(x => x.date_published.Year).falls_in(Range.from(1982).inclusive().upto(2003).inclusive());
 
         var results = sut.all().filter_using(criteria);
 
