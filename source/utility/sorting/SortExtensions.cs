@@ -19,22 +19,14 @@ namespace code.utility.sorting
       IGetTheValueOfAProperty<Item, Property> accessor)
       where Property : IComparable<Property>
     {
-        return (a, b) =>
-        {
-            var previous_result = previous_comparer(a, b);
-            return previous_result == 0 ? Sort<Item>.by(accessor)(a, b) : previous_result;
-        };
+      return previous_comparer.then_by(accessor, SortOrders.ascending);
     }
 
     public static ICompareTwoItems<Item> then_by_descending<Item, Property>(this ICompareTwoItems<Item> previous_comparer,
       IGetTheValueOfAProperty<Item, Property> accessor)
       where Property : IComparable<Property>
     {
-        return (a, b) =>
-        {
-            var previous_result = previous_comparer(a, b);
-            return previous_result == 0 ? Sort<Item>.by_descending(accessor)(a, b) : previous_result;
-        };
+      return previous_comparer.then_by(accessor, SortOrders.descending);
     }
   }
 }
