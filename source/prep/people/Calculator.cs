@@ -21,6 +21,7 @@ namespace code.prep.people
     {
       if (i < 0 || i1 < 0) throw new NotImplementedException();
       connection.Open();
+      connection.CreateCommand().ExecuteNonQuery();
       return i + i1;
     }
 
