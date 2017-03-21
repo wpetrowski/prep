@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using code.utility;
 using code.utility.matching;
+using code.utility.sorting;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.enumerables;
 using developwithpassion.specifications.assertions.type_specificity;
@@ -260,7 +261,7 @@ namespace code.prep.movies
 
       It by_title_descending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.title, SortOrder.descending);
+        var comparer = Sort<Movie>.by(x => x.title, SortOrders.descending);
 
         var results = sut.all().sort_using(comparer);
 
@@ -271,7 +272,7 @@ namespace code.prep.movies
 
       It by_title_ascending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.title, SortOrder.ascending);
+        var comparer = Sort<Movie>.by(x => x.title, SortOrders.ascending);
 
         var results = sut.all().sort_using(comparer);
 
@@ -282,7 +283,7 @@ namespace code.prep.movies
 
       It by_date_published_descending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.date_published, SortOrder.descending);
+        var comparer = Sort<Movie>.by(x => x.date_published, SortOrders.descending);
 
         var results = sut.all().sort_using(comparer);
 
@@ -293,7 +294,7 @@ namespace code.prep.movies
 
       It by_date_published_ascending = () =>
       {
-        var comparer = Sort<Movie>.by(x => x.date_published, SortOrder.ascending);
+        var comparer = Sort<Movie>.by(x => x.date_published, SortOrders.ascending);
 
         var results = sut.all().sort_using(comparer);
 
@@ -316,7 +317,7 @@ namespace code.prep.movies
           ProductionStudio.Dreamworks,
           ProductionStudio.Universal,
           ProductionStudio.Disney)
-          .then_by(x => x.date_published, SortOrder.ascending);
+          .then_by(x => x.date_published, SortOrders.ascending);
 
         var results = sut.all().sort_using(comparer);
         /* should return a set of results 
