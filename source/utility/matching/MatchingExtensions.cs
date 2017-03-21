@@ -14,11 +14,6 @@ namespace code.utility.matching
       return create(extension_point, new EqualToAny<Property>(values));
     }
 
-    public static IMatchA<Item> not_equal_to<Item,Property>(this MatchingExtensionPoint<Item,Property> extension_point, Property value)
-    {
-      return equal_to(extension_point, value).not();
-    }
-
     public static IMatchA<Item> greater_than<Item,Property>(this MatchingExtensionPoint<Item,Property> extension_point, Property value) where Property : IComparable<Property>
     {
       return create(extension_point, new GreaterThan<Property>(value));
