@@ -2,31 +2,31 @@ using System;
 
 namespace code.utility.matching
 {
-  public class RangeStartExtensionPoint<Value> : IKnowHowToRange<Value> where Value : IComparable<Value>
+  public class RangeStart<Value> : IKnowHowToRange<Value> where Value : IComparable<Value>
   {
     private Value from;
     private bool is_inclusive;
 
-    public RangeStartExtensionPoint(Value from)
+    public RangeStart(Value from)
     {
       this.from = from;
     }
 
-    public RangeStartExtensionPoint<Value> inclusive()
+    public RangeStart<Value> inclusive()
     {
       this.is_inclusive = true;
       return this;
     }
 
-    public RangeStartExtensionPoint<Value> exclusive()
+    public RangeStart<Value> exclusive()
     {
       this.is_inclusive = false;
       return this;
     }
 
-    public RangeEndExtensionPoint<Value> upto(Value to)
+    public RangeEnd<Value> upto(Value to)
     {
-      return new RangeEndExtensionPoint<Value>(this, to);
+      return new RangeEnd<Value>(this, to);
     }
 
 
