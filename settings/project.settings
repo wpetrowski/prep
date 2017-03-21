@@ -110,6 +110,7 @@ configure({
 
   framework_references: [
     "System.dll",
+    "System.Data.dll",
   ],
 
   iis_express: {
@@ -191,6 +192,8 @@ configure({
     end,
 
     continuous_testing: {
+      interval: 2,
+
       ignored_files: [
         /generated/,
         /assembly(_)?info/i,

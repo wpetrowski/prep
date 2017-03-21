@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using code.utility;
 using Machine.Specifications;
@@ -32,10 +31,9 @@ namespace code.prep.people
 
       It returns_a_set_of_items_created_using_the_provided_mapper = () =>
       {
-
         result.each(x =>
         {
-//          Console.Out.WriteLine(x);
+          //          Console.Out.WriteLine(x);
           return true;
         });
       };
