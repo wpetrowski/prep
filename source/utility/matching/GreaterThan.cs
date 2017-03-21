@@ -2,35 +2,20 @@
 
 namespace code.utility.matching
 {
-  public class GreaterThan<Value> : IMatchA<Value> where Value : IComparable<Value>
+  public class GreaterThan
   {
-    Value start;
-
-    public GreaterThan(Value start)
+    public static Criteria<Value> value<Value>(Value value) where Value : IComparable<Value>
     {
-      this.start = start;
-    }
-
-    public bool matches(Value item)
-    {
-      return item.CompareTo(start) > 0;
+      return x => x.CompareTo(value) > 0;
     }
   }
 
-  public class Between<Value> : IMatchA<Value> where Value : IComparable<Value>
+  public static class GreaterThanMatchingExtensions
   {
-    Value start;
-    Value end;
-
-    public Between(Value start, Value end)
+    public static Criteria<Item> greater_than<Item,Property>(this IProvideAccessToMatchBuilders<Item,Property> extension_point, Property value) where Property : IComparable<Property>
     {
-      this.start = start;
-      this.end = end;
+      return extension_point.create(GreaterThan.value(value));
     }
 
-    public bool matches(Value item)
-    {
-      return item.CompareTo(start) >= 0 && item.CompareTo(end) <= 0;
-    }
   }
 }

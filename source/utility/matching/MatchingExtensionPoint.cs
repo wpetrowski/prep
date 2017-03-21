@@ -2,10 +2,10 @@
 {
   public class MatchingExtensionPoint<ItemToMatch, Property> : IProvideAccessToMatchBuilders<ItemToMatch, Property>
   {
-    PropertyAccessor<ItemToMatch, Property> accessor { get; }
+    IGetTheValueOfAProperty<ItemToMatch, Property> accessor { get; }
 
 
-    public MatchingExtensionPoint(PropertyAccessor<ItemToMatch, Property> accessor)
+    public MatchingExtensionPoint(IGetTheValueOfAProperty<ItemToMatch, Property> accessor)
     {
       this.accessor = accessor;
     }
@@ -24,15 +24,15 @@
         this.original = original;
       }
 
-      public IMatchA<ItemToMatch> create(IMatchA<Property> value_matcher)
+      public Criteria<ItemToMatch> create(Criteria<Property> value_matcher)
       {
         return original.create(value_matcher).not();
       }
     }
 
-    public IMatchA<ItemToMatch> create(IMatchA<Property> value_matcher)
+    public Criteria<ItemToMatch> create(Criteria<Property> value_matcher)
     {
-      return new PropertyMatch<ItemToMatch, Property>(accessor, value_matcher);
+      return x => value_matcher(accessor(x));
     }
   }
 }

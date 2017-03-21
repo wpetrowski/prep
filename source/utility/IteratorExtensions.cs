@@ -16,11 +16,6 @@ namespace code.utility
       foreach (var element in items) if (criteria(element)) yield return element;
     }
 
-    public static IEnumerable<Element> filter_using<Element>(this IEnumerable<Element> items, IMatchA<Element> criteria)
-    {
-      return items.filter_using(criteria.matches);
-    }
-
     public static void each<Element>(this IEnumerable<Element> items, ElementVisitor<Element> visitor)
     {
       foreach (var element in items)

@@ -2,6 +2,6 @@
 {
   public interface IProvideAccessToMatchBuilders<in ItemToMatch, out Property>
   {
-    IMatchA<ItemToMatch> create(IMatchA<Property> value_matcher);
+    Criteria<ItemToMatch> create(Criteria<Property> value_matcher);
   }
 }

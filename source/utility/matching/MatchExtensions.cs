@@ -2,19 +2,19 @@
 {
   public static class MatchExtensions
   {
-    public static IMatchA<Element> or<Element>(this IMatchA<Element> left, IMatchA<Element> right)
+    public static Criteria<Element> or<Element>(this Criteria<Element> left, Criteria<Element> right)
     {
-		  return new BinaryMatch<Element>(left, right, BinaryMatches.or);
+      return x => left(x) || right(x);
     }
 
-	  public static IMatchA<Element> and<Element>(this IMatchA<Element> left, IMatchA<Element> right)
+	  public static Criteria<Element> and<Element>(this Criteria<Element> left, Criteria<Element> right)
 	  {
-		  return new BinaryMatch<Element>(left, right, BinaryMatches.and);
+	    return x => left(x) && right(x);
 	  }
 
-    public static IMatchA<Element> not<Element>(this IMatchA<Element> to_negate)
+    public static Criteria<Element> not<Element>(this Criteria<Element> to_negate)
     {
-      return new NegatingMatch<Element>(to_negate);
+      return x => !(to_negate(x));
     }
   }
 }

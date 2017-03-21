@@ -1,5 +1,4 @@
 using System;
-using code.utility.matching;
 
 namespace code.prep.movies
 {
@@ -28,16 +27,5 @@ namespace code.prep.movies
     {
       return title.GetHashCode();
     }
-
-    public static IMatchA<Movie> published_by(ProductionStudio studio)
-    {
-      return new IsPublishedBy(studio);
-    }
-
-    public static IMatchA<Movie> in_genre(Genre genre)
-    {
-      return new IsInGenre(genre);
-    }
-
   }
 }

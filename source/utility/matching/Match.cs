@@ -3,9 +3,9 @@
   public static class Match<ItemToMatch>
   {
     public static MatchingExtensionPoint<ItemToMatch, Property> with_attribute<Property>(
-      PropertyAccessor<ItemToMatch, Property> property_accessor)
+      IGetTheValueOfAProperty<ItemToMatch, Property> get_the_value_of_a_property)
     {
-      return new MatchingExtensionPoint<ItemToMatch, Property>(property_accessor);
+      return new MatchingExtensionPoint<ItemToMatch, Property>(get_the_value_of_a_property);
     }
   }
 }
