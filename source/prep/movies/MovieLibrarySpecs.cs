@@ -206,7 +206,7 @@ namespace code.prep.movies
       {
         var results = sut.all().filter(x => x.production_studio).equal_to_any(ProductionStudio.Pixar, ProductionStudio.Disney);
 
-//        results.ShouldContainOnly(a_bugs_life, pirates_of_the_carribean, cars);
+        results.ShouldContainOnly(a_bugs_life, pirates_of_the_carribean, cars);
       };
 
       It finds_all_movies_not_published_by_pixar = () =>
