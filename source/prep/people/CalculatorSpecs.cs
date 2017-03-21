@@ -19,6 +19,12 @@ namespace code.prep.people
       };
     }
 
+    public class when_created : concern
+    {
+      It does_not_attempt_to_open_its_database_connection = () =>
+        connection.should().never_received(x => x.Open());
+    }
+
     public class when_adding : concern
     {
       public class two_positive_numbers
