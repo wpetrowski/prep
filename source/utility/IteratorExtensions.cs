@@ -3,8 +3,6 @@ using code.utility.matching;
 
 namespace code.utility
 {
-  public delegate int ICompareTwoItems<Item>(Item first, Item second);
-
   public static class IteratorExtensions
   {
     public static IEnumerable<Element> one_at_a_time<Element>(this IEnumerable<Element> items)

@@ -15,9 +15,9 @@
       get { return new NegatingMatchingExtensionPoint(this); }
     }
 
-    class NegatingMatchingExtensionPoint : IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>>
+    public class NegatingMatchingExtensionPoint : IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>>
     {
-      IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>> original;
+      public IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>> original;
 
       public NegatingMatchingExtensionPoint(IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>> original)
       {
