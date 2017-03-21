@@ -17,6 +17,9 @@ def filter_libs(libs)
       /mono/i !~ file &&
       /android/i !~ file &&
       /System\./i !~ file &&
+      /SL3/i !~ file &&
+      /WP7/i !~ file &&
+      /\.resources/i !~ file &&
       /Moq/i !~ file
   end
 
