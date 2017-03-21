@@ -1,6 +1,7 @@
 ﻿using System;
+using code.utility.matching;
 
-namespace code.utility.matching
+namespace code.utility
 {
   public static class Range
   {
