@@ -111,6 +111,7 @@ configure({
   framework_references: [
     "System.dll",
     "System.Data.dll",
+    "System.Security.dll",
   ],
 
   iis_express: {

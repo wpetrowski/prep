@@ -1,10 +1,13 @@
 ﻿using System.Data;
+using System.Security.Principal;
+using System.Threading;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
+using Rhino.Mocks;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
-namespace code.prep.people
+namespace code.prep.mspec_sample
 {
   [Subject(typeof(Calculator))]
   public class CalculatorSpecs
@@ -23,6 +26,49 @@ namespace code.prep.people
     {
       It does_not_attempt_to_open_its_database_connection = () =>
         connection.should().never_received(x => x.Open());
+    }
+
+    public class when_disabling_calculation : concern
+    {
+      public class and_they_are_in_the_correct_security_group
+      {
+        Establish c = () =>
+        {
+          principal = fake.an<IPrincipal>();
+          principal.setup(x => x.IsInRole(Arg<string>.Is.Anything)).Return(true);
+
+          spec.change(() => Thread.CurrentPrincipal).to(principal);
+        };
+
+        Because b = () =>
+          result = sut.disable();
+
+        It allows_the_calculator_to_shutdown = () =>
+          result.ShouldBeTrue();
+
+        static IPrincipal principal;
+        static bool result;
+      }
+
+      public class and_they_are_not_in_the_correct_security_group
+      {
+        Establish c = () =>
+        {
+          principal = fake.an<IPrincipal>();
+          principal.setup(x => x.IsInRole(Arg<string>.Is.Anything)).Return(false);
+
+          spec.change(() => Thread.CurrentPrincipal).to(principal);
+        };
+
+        Because b = () =>
+          result = sut.disable();
+
+        It does_not_allow_disabling = () =>
+          result.ShouldBeFalse();
+
+        static IPrincipal principal;
+        static bool result;
+      }
     }
 
     public class when_adding : concern
