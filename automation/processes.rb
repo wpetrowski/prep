@@ -4,15 +4,14 @@ module Automation
 
     desc 'kill_runner_processes', 'kill all the runner processes'
     def kill_runner_processes
-      kill(*settings.runner_processes)
+      settings.runner_processes.each do |process|
+        kill process
+      end
     end
 
     desc 'kill', 'kills a process'
-    def kill(*processes)
-      processes.each do |process|
-        command = "get-process -Name #{process} | stop-process"
-        system("start powershell -WindowStyle hidden -Command \"#{command}\"")
-      end
+    def kill(process)
+      system("taskkill /F /IM #{process}.exe")
     end
   end
 end

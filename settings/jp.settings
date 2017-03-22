@@ -3,6 +3,8 @@ configure({
 
   extra_aliases: ['jp.aliases'],
 
+  has_iis_express: true,
+
   net_tools_paths: [
     '/c/Program Files (x86)',
     '/c/Program Files (x86)/MSBuild/14.0/bin',
