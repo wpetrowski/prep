@@ -49,7 +49,7 @@ namespace code.web
       };
 
       Because b = () =>
-        sut.can_process(request);
+        sut.process(request);
 
       It run_the_application_specific_feature_using_the_request = () =>
         feature.should().received(x => x.process(request));
