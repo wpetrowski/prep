@@ -1,8 +1,7 @@
 ﻿namespace code.web
 {
-  public interface IHandleOneWebRequest
+  public interface IHandleOneWebRequest : IImplementAUserStory
   {
-    void process(IProvideDetailsAboutAWebRequest request);
     bool can_process(IProvideDetailsAboutAWebRequest request);
   }
 }

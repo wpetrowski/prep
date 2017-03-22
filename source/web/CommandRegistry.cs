@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace code.web
 {
-  public class CommandRegistry :IFindACommandThatCanHandleARequest
+  public class CommandRegistry : IFindACommandThatCanHandleARequest
   {
-      private readonly IEnumerable<IHandleOneWebRequest> commands;
-      private ICreateAMissingCommandWhenOneCantBeFound missingCommandCreator;
+    IEnumerable<IHandleOneWebRequest> commands;
+    ICreateAMissingCommandWhenOneCantBeFound missing_handler_builder;
 
-      public CommandRegistry(IEnumerable<IHandleOneWebRequest> commands,
-                             ICreateAMissingCommandWhenOneCantBeFound missingCommandCreator)
-      {
-          this.commands = commands;
-          this.missingCommandCreator = missingCommandCreator;
-      }
+    public CommandRegistry(IEnumerable<IHandleOneWebRequest> commands,
+      ICreateAMissingCommandWhenOneCantBeFound missing_command_builder)
+    {
+      this.commands = commands;
+      this.missing_handler_builder = missing_command_builder;
+    }
 
-     public IHandleOneWebRequest get_command_that_can_handle(IProvideDetailsAboutAWebRequest request)
-     {
-         var matchingCommand = commands.FirstOrDefault(command => command.can_process(request));
+    public IHandleOneWebRequest get_command_that_can_handle(IProvideDetailsAboutAWebRequest request)
+    {
+      var command_that_can_handle = commands.FirstOrDefault(command => command.can_process(request));
 
-         return matchingCommand ?? missingCommandCreator(request);
-     }
+      return command_that_can_handle ?? missing_handler_builder(request);
+    }
   }
 }
