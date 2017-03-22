@@ -1,4 +1,6 @@
-﻿namespace code.utility.matching
+﻿using code.utility.core;
+
+namespace code.utility.matching
 {
   public static class Match<Item>
   {

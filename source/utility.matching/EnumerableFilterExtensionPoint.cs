@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using code.utility.core;
+using code.utility.iteration;
 
 namespace code.utility.matching
 {

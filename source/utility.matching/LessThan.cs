@@ -10,7 +10,7 @@ namespace code.utility.matching
     }
   }
 
-  public static class LessThanMatchingExtensions
+  public static partial class MatchingExtensions
   {
     public static ReturnType less_than<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property,ReturnType> extension_point, Property value) where Property : IComparable<Property>
     {

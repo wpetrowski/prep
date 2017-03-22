@@ -10,7 +10,7 @@ namespace code.utility.matching
     }
   }
 
-  public static class BetweenMatchingExtensions
+  public static partial class MatchingExtensions
   {
     public static ReturnType between<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, Property start, Property end) where Property : IComparable<Property>
     {

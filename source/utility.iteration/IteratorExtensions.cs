@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using code.utility.core;
 using code.utility.matching;
 
-namespace code.utility
+namespace code.utility.iteration
 {
   public static class IteratorExtensions
   {

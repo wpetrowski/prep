@@ -1,4 +1,5 @@
-﻿using Machine.Specifications;
+﻿using code.utility.core;
+using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
 namespace code.utility.matching

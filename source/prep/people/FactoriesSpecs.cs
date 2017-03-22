@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using code.utility;
+using code.utility.core;
+using code.utility.iteration;
 using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
@@ -33,7 +35,6 @@ namespace code.prep.people
       {
         result.each(x =>
         {
-          //          Console.Out.WriteLine(x);
           return true;
         });
       };

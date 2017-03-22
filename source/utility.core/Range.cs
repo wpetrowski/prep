@@ -1,7 +1,7 @@
 ﻿using System;
 using code.utility.matching;
 
-namespace code.utility
+namespace code.utility.core
 {
   public static class Range
   {
@@ -29,5 +29,13 @@ namespace code.utility
     {
       return after(start, inclusive_start).and(before(end, inclusive_end));
     }
+  }
+  public static partial class MatchingExtensions
+  {
+    public static ReturnType between<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, Property start, Property end) where Property : IComparable<Property>
+    {
+      return extension_point.create(Between.values(start, end));
+    }
+
   }
 }

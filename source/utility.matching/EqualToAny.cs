@@ -10,7 +10,7 @@ namespace code.utility.matching
     }
   }
 
-  public static class EqualityMatchingExtensions
+  public static partial class MatchingExtensions
   {
     public static ReturnType equal_to<Item,Property, ReturnType>(this IProvideAccessToMatchBuilders<Item,Property, ReturnType> extension_point, Property property)
     {

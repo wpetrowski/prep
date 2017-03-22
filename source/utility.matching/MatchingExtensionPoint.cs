@@ -1,4 +1,6 @@
-﻿namespace code.utility.matching
+﻿using code.utility.core;
+
+namespace code.utility.matching
 {
   public class MatchingExtensionPoint<ItemToMatch, Property> : IProvideAccessToMatchBuilders<ItemToMatch, Property, Criteria<ItemToMatch>>
   {

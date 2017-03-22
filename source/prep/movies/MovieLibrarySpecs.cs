@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using code.utility;
+using code.utility.core;
+using code.utility.iteration;
 using code.utility.matching;
 using code.utility.sorting;
 using developwithpassion.specifications.assertions.core;
