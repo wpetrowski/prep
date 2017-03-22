@@ -11,7 +11,7 @@ namespace code
     {
     }
 
-    public class connecting_to_a_database : concern
+    public class connecting_to_a_mysql_database_running_in_a_container : concern
     {
       It works = () =>
       {
