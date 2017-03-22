@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using Machine.Specifications;
 using MySql.Data.MySqlClient;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
@@ -15,9 +16,9 @@ namespace code
     {
       It works = () =>
       {
-        var table = new DataTable();  
-        using (var connection = new MySqlConnection("Server=10.0.1.140;Port=4001;Uid=root;Pwd=iqmetrix;Database=iq_db"))
-        using (var command = connection.CreateCommand()) 
+        var table = new DataTable();
+        using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["code"].ConnectionString))
+        using (var command = connection.CreateCommand())
         {
           command.CommandType = CommandType.Text;
           command.CommandText = "select * from people";
