@@ -86,9 +86,8 @@ configure({
   },
 
   database: {
-    provider_for_migrations: 'SqlServer2014',
     name: 'code',
-    connection_string: 'Server=(LocalDB)\code;Integrated Security=true' 
+    host: 'localhost'
   },
 
   edit_project_template: 'source/edit.csproj.template',
@@ -110,6 +109,7 @@ configure({
 
   framework_references: [
     "System.dll",
+    "System.Configuration.dll",
     "System.Data.dll",
     "System.Security.dll",
     "System.Xml.dll"
