@@ -2,6 +2,6 @@
 {
   public interface IFindACommandThatCanHandleARequest
   {
-    void get_command_that_can_handle(IProvideDetailsAboutAWebRequest request);
+    IHandleOneWebRequest get_command_that_can_handle(IProvideDetailsAboutAWebRequest request);
   }
 }

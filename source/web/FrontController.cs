@@ -1,17 +1,23 @@
 ﻿namespace code.web
 {
-  public class FrontController
+  public interface IProcessWebRequests
   {
-    private IFindACommandThatCanHandleARequest registry;
+    void run(IProvideDetailsAboutAWebRequest request);
+  }
 
-    public FrontController(IFindACommandThatCanHandleARequest registry)
+  public class FrontController : IProcessWebRequests
+  {
+    IFindACommandThatCanHandleARequest commands;
+
+    public FrontController(IFindACommandThatCanHandleARequest commands)
     {
-      this.registry = registry;
+      this.commands = commands;
     }
 
     public void run(IProvideDetailsAboutAWebRequest request)
     {
-      registry.get_command_that_can_handle(request);
+      var handler = commands.get_command_that_can_handle(request);
+      handler.process(request);
     }
   }
 }

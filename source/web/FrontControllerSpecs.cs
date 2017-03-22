@@ -11,7 +11,7 @@ namespace code.web
   public class FrontControllerSpecs
   {
 
-    public abstract class concern : spec.observe<FrontController>
+    public abstract class concern : spec.observe<IProcessWebRequests, FrontController>
     {
         
     }
@@ -21,17 +21,20 @@ namespace code.web
       Establish c = () =>
       {
         request = fake.an<IProvideDetailsAboutAWebRequest>();
+        command_that_can_handle_the_request = fake.an<IHandleOneWebRequest>();
         commands = depends.on<IFindACommandThatCanHandleARequest>();
+        commands.setup(x => x.get_command_that_can_handle(request)).Return(command_that_can_handle_the_request);
       };
 
       Because b = () =>
         sut.run(request);
 
-      It finds_the_the_command_that_can_process_the_request = () =>
-        commands.should().received(x => x.get_command_that_can_handle(request));
+      It delegates_processing_of_the_request_to_the_command_that_can_handle_it = () =>
+        command_that_can_handle_the_request.should().received(x => x.process(request));
 
       static IFindACommandThatCanHandleARequest commands;
       static IProvideDetailsAboutAWebRequest request;
+      static IHandleOneWebRequest command_that_can_handle_the_request;
     }
   }
 }
