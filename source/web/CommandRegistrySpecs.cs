@@ -21,6 +21,7 @@ namespace code.web
         Establish c = () =>
         {
           the_command_that_can_handle = fake.an<IHandleOneWebRequest>();
+          request = fake.an<IProvideDetailsAboutAWebRequest>();
           all_commands = Enumerable.Range(1, 100).Select(x => fake.an<IHandleOneWebRequest>()).ToList();
           all_commands.Add(the_command_that_can_handle);
           the_command_that_can_handle.setup(x => x.can_process(request)).Return(true);
