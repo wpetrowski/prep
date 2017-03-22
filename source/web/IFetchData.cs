@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using code.prep.people;
-
-namespace code.web
+﻿namespace code.web
 {
-  public interface IFetchData
+  public interface IFetchData<Data>
   {
-    IEnumerable<Person> get_all_people();
+    Data run();
   }
 }

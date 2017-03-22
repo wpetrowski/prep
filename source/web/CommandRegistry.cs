@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using code.web.stubs;
 
 namespace code.web
 {
@@ -7,6 +8,11 @@ namespace code.web
   {
     IEnumerable<IHandleOneWebRequest> commands;
     ICreateAMissingCommandWhenOneCantBeFound missing_handler_builder;
+
+    public CommandRegistry():this(Stubs.dummy_set_of_handlers(), 
+      Stubs.missing_request_builder)
+    {
+    }
 
     public CommandRegistry(IEnumerable<IHandleOneWebRequest> commands,
       ICreateAMissingCommandWhenOneCantBeFound missing_command_builder)

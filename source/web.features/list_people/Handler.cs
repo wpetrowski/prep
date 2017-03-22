@@ -1,17 +1,27 @@
-﻿namespace code.web.features.list_people
+﻿using System.Collections.Generic;
+using code.prep.people;
+using code.web.stubs;
+
+namespace code.web.features.list_people
 {
   public class Handler : IImplementAUserStory
   {
-	  private readonly IFetchData _dataFetcher;
+	  IFetchDataUsingTheRequest<IEnumerable<Person>> all_people_query;
+    ISendResponsesToTheClient response;
 
-	  public Handler(IFetchData dataFetcher)
-	  {
-		  _dataFetcher = dataFetcher;
-	  }
+    public Handler():this(Stubs.dummy_list_of_people, Stubs.dummy_response_engine())
+    {
+    }
 
-	  public void process(IProvideDetailsAboutAWebRequest request)
+    public Handler(IFetchDataUsingTheRequest<IEnumerable<Person>> all_people_query, ISendResponsesToTheClient response)
+    {
+      this.all_people_query = all_people_query;
+      this.response = response;
+    }
+
+    public void process(IProvideDetailsAboutAWebRequest request)
 	  {
-		  var people = _dataFetcher.get_all_people();
+      response.send(all_people_query(request));
 	  }
   }
 }

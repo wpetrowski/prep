@@ -9,6 +9,10 @@
   {
     IFindACommandThatCanHandleARequest commands;
 
+    public FrontController():this(new CommandRegistry())
+    {
+    }
+
     public FrontController(IFindACommandThatCanHandleARequest commands)
     {
       this.commands = commands;

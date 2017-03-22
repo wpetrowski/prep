@@ -112,7 +112,8 @@ configure({
     "System.Configuration.dll",
     "System.Data.dll",
     "System.Security.dll",
-    "System.Xml.dll"
+    "System.Xml.dll",
+    "System.Web.dll"
   ],
 
   iis_express: {
