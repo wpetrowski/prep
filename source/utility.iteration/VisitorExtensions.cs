@@ -6,10 +6,17 @@ namespace code.utility.iteration
 {
   public static class VisitorExtensions
   {
+    public static Result sum<Element, Result>(this IEnumerable<Element> items,
+      IGetTheValueOfAProperty<Element, Result> accessor)
+    {
+      throw new NotImplementedException();
+
+    }
+
     public static Result get_result_of_processing_all_with<Element, Result>(this IEnumerable<Element> items,
       IProcessAndReturnAValue<Element, Result> visitor)
     {
-      items.each_for_all(visitor.process);
+      items.process_all_using(visitor);
       return visitor.get_result();
     }
 
@@ -49,6 +56,5 @@ namespace code.utility.iteration
 
       return result;
     }
-     
   }
 }

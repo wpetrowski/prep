@@ -73,8 +73,19 @@ namespace code.utility.iteration
         }; 
       };
 
-      static List<SomeItem> values;
+      protected static List<SomeItem> values;
     }
 
+    public class when_calculating_the_sum_of_an_attribute : concern_for_working_with_sets
+    {
+      Because b = () =>
+        result = values.sum(x => x.age);
+
+      It returns_the_sum_of_the_provided_accessor = () =>
+        result.ShouldEqual(100);
+
+      static int result;
+         
+    }
   }
 }
