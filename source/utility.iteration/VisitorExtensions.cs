@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using code.utility.core;
 
 namespace code.utility.iteration
@@ -11,6 +10,20 @@ namespace code.utility.iteration
     {
       return items.get_result_of_processing_all_with(
         new SummingVisitor<Element, Result>(accessor,
+          (x, y) =>
+          {
+            dynamic first = x;
+            dynamic second = y;
+            return first + second;
+          }));
+
+    }
+
+    public static Result avg<Element, Result>(this IEnumerable<Element> items,
+      IGetTheValueOfAProperty<Element, Result> accessor)
+    {
+      return items.get_result_of_processing_all_with(
+        new AvgVisitor<Element, Result>(accessor,
           (x, y) =>
           {
             dynamic first = x;
