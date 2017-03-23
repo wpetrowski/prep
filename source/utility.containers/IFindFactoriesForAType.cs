@@ -4,6 +4,6 @@ namespace code.utility.containers
 {
     public interface IFindFactoriesForAType
     {
-        ITypeFactory get_resolver<ItemToFetch>();
+        ITypeFactory get_factory<ItemToFetch>();
     }
 }

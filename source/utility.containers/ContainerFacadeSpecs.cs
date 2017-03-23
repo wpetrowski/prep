@@ -20,7 +20,7 @@ namespace code.utility.containers
       {
         factory_registry = depends.on<IFindFactoriesForAType>();
           the_type_factory = fake.an<ITypeFactory>();
-          factory_registry.setup(registry => registry.get_resolver<IProcessWebRequests>()).Return(the_type_factory);
+          factory_registry.setup(registry => registry.get_factory<IProcessWebRequests>()).Return(the_type_factory);
       };
 
       Because b = () => 

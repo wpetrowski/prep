@@ -13,7 +13,7 @@ namespace code.utility.containers
 
         public ItemToFetch an<ItemToFetch>()
         {
-            var factory = factory_registry.get_resolver<ItemToFetch>();
+            var factory = factory_registry.get_factory<ItemToFetch>();
 
             return factory.create<ItemToFetch>();
         }
