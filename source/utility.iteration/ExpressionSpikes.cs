@@ -62,6 +62,7 @@ namespace code.utility.iteration
 
         var instance = lambda.Compile();
         instance(2).ShouldBeTrue();
+        instance(3).ShouldBeFalse();
       };
 
 
