@@ -7,6 +7,7 @@ namespace code.utility.iteration
 		where Result : IComparable<Result>
 	{
 		IGetTheValueOfAProperty<Element, Result> accessor;
+		private bool firstResult;
 		Result result;
 		private Func<Result, Result, Result> selector;
 
@@ -14,11 +15,18 @@ namespace code.utility.iteration
 		{
 			this.selector = selector;
 			this.accessor = accessor;
+			firstResult = true;
 		}
 
 		public void process(Element value)
 		{
 			var current = accessor(value);
+			if (firstResult)
+			{
+				firstResult = false;
+				result = current;
+				return;
+			}
 			result = selector(current, result);
 		}
 
