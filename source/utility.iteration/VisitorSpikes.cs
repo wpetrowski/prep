@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using code.test_utilities;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
@@ -51,5 +53,28 @@ namespace code.utility.iteration
       static int result;
       static int expected_result;
     }
+
+    public class concern_for_working_with_sets : concern
+    {
+      public class SomeItem
+      {
+        public int age { get; set; }
+        public decimal cost { get; set; }
+      }
+
+      Establish c = () =>
+      {
+        values = new List<SomeItem>
+        {
+          new SomeItem {age = 10, cost = 20m},
+          new SomeItem {age = 20, cost = 30m},
+          new SomeItem {age = 30, cost = 40m},
+          new SomeItem {age = 40, cost = 50m}
+        }; 
+      };
+
+      static List<SomeItem> values;
+    }
+
   }
 }
