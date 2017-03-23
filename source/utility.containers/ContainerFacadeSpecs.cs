@@ -2,6 +2,7 @@
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
+using Rhino.Mocks;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
 namespace code.utility.containers
@@ -18,15 +19,18 @@ namespace code.utility.containers
       Establish c = () =>
       {
         registry = depends.on<IFindFactoriesForAType>();
+        factory = fake.an<ICreateInstances>();
+        registry.setup(x => x.get_resolver_for_type(Arg<Type>.Is.Anything)).Return(factory); //.should().received(x => x.get_resolver_for_type(typeof(Object)));
       };
 
       Because b = () => 
         sut.an<Object>();
 
-      It tells_the_dependency_registry_to_get_the_factory_for_that_type = () =>
-        registry.should().received(x => x.get_resolver_for_type(typeof(Object)));
+      private It tells_the_correct_factory_to_create_that_type = () =>
+        factory.should().received(x => x.create(typeof(Object)));
 
       static IFindFactoriesForAType registry;
+      static ICreateInstances factory;
     }
   }
 }
