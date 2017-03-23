@@ -16,9 +16,6 @@ alias cw='root;thor compile:web compile_units/web.compile'
 alias ccw='root;thor processes:kill iisexpress node;thor automation:clean;cw'
 alias root=ch_root
 
-#Load order aliases
-alias dlo='root;cd source;node dump_load_order'
-
 #Edit a particular compile unit
 alias edit='thor edit:edit $*'
 
@@ -49,9 +46,17 @@ alias tpkrp='thor processes:kill_runner_processes'
 alias fb='thor git:fetch_branch $*;edit --compile_unit=compile_unit/all.compile'
 alias fl='thor git:fetch_latest $*;edit --compile_unit=compile_units/all.compile'
 alias gljp='thor git::get_latest_from_jp;edit --compile_unit=compile_units/all.compile'
+
+#Add, commit, and push your changes to your personal fork
 alias smc='thor work:save_my_changes'
+
+#Add and commit your current work onto a branch that you can revisit later, then pull down all of the latest code from the presenter
 alias sne='thor work:start_new_exercise;thor compile:project compile_units/all.compile'
+
+#Show all of the student remotes
 alias str='thor git:student_remotes'
+
+#Trash all of the current work on your branch
 alias trash='thor git:trash;edit --compile_unit=compile_units/all.compile'
 
 #Initialize the project
@@ -60,17 +65,7 @@ alias rf='bundle install && thor bootstrap:setup && thor startup:configure'
 #Migration aliases
 alias clean='thor automation:clean'
 alias init='thor automation:clean'
-
 alias sia='start_it_all'
-
-function start_it_all(){
-  thor processes:kill_runner_processes
-  thor growl:start
-  thor automation:clean
-  thor automation:init
-  thor run:feature
-  continuous_dev
-}
 
 function restart_web_app() {
   tpkrp
