@@ -471,6 +471,8 @@ using Machine.Specifications;&#xD;
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/CustomProperties/=FileName/@EntryIndexedValue">Class</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/CustomProperties/=ValidateFileName/@EntryIndexedValue">False</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Description/@EntryValue">ObservationsWithContract</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Finterface/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Finterface/Order/@EntryValue">5</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Text/@EntryValue">using developwithpassion.specifications.assertions.core;&#xD;
 using spec = developwithpassion.specifications.use_engine&lt;Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine&gt;;&#xD;
@@ -482,7 +484,7 @@ using Machine.Specifications;&#xD;
     public class $filename$&#xD;
     {&#xD;
 &#xD;
-    public abstract class concern : spec.observe&lt;contract_interface$,$contract_implementation$&gt;&#xD;
+    public abstract class concern : spec.observe&lt;$contract_interface$,$contract_implementation$&gt;&#xD;
     {&#xD;
         &#xD;
     }&#xD;
