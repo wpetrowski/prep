@@ -16,6 +16,7 @@ alias boweri='root;cd source;npm run-script postinstall'
 #
 #Compile aliases
 alias cs='thor compile:selection'
+alias cw='root;thor compile:web compile_units/web.compile'
 alias ccw='root;thor processes:kill iisexpress node;thor automation:clean;cw'
 alias root=ch_root
 alias automation='root;cd automation'
@@ -50,13 +51,13 @@ alias sra='thor specs:run_them compile_units/all.compile'
 alias tpkrp='thor processes:kill_runner_processes'
 
 #project aliases
-alias fb='thor git:fetch_branch $*'
-alias fl='thor git:fetch_latest $*'
-alias gljp='thor git::get_latest_from_jp'
+alias fb='thor git:fetch_branch $*;edit --compile_unit=compile_unit/all.compile'
+alias fl='thor git:fetch_latest $*;edit --compile_unit=compile_units/all.compile'
+alias gljp='thor git::get_latest_from_jp;edit --compile_unit=compile_units/all.compile'
 alias smc='thor work:save_my_changes'
 alias sne='thor work:start_new_exercise;thor compile:project compile_units/all.compile'
 alias str='thor git:student_remotes'
-alias trash='thor git:trash'
+alias trash='thor git:trash;edit --compile_unit=compile_units/all.compile'
 
 #Initialize the project
 alias rf='bundle install && thor bootstrap:setup && thor startup:configure'
@@ -74,6 +75,12 @@ function start_it_all(){
   thor automation:init
   thor run:feature
   continuous_dev
+}
+
+function restart_web_app() {
+  tpkrp
+  ccw
+  _powershell ./start_web_app.bat
 }
 
 function _powershell(){
@@ -96,6 +103,7 @@ alias web_ui_bare='docker-compose run --rm --no-deps web_ui'
 # Workspace bound to the web.ui node docker environment - includes linked environment and service ports
 alias seeder_workspace='docker-compose run --rm seeder /bin/bash'
 
+
 # Command aliases
 alias mix='docker-compose run --rm seeder mix'
 alias mysql='docker-compose run --rm seeder mysql'
@@ -116,6 +124,9 @@ alias rdb='mix ecto.drop && mix ecto.create && mix ecto.migrate;seed'
 
 # Stop all containers started by this folder docker-compose configuration
 alias down='docker-compose down'
+
+# Restart the web app
+alias rwa=restart_web_app
 
 # Utility alias to run on a clean checkout
 function clean_slate() {
