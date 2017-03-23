@@ -3,44 +3,23 @@ using code.utility.core;
 
 namespace code.utility.iteration
 {
-	public class MinVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
+	public class CondensingVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
 		where Result : IComparable<Result>
 	{
 		IGetTheValueOfAProperty<Element, Result> accessor;
 		Result result;
+		private Func<Result, Result, Result> selector;
 
-		public MinVisitor(IGetTheValueOfAProperty<Element, Result> accessor)
+		public CondensingVisitor(IGetTheValueOfAProperty<Element, Result> accessor, Func<Result, Result, Result> selector)
 		{
+			this.selector = selector;
 			this.accessor = accessor;
 		}
 
 		public void process(Element value)
 		{
 			var current = accessor(value);
-			result = current.CompareTo(result) < 0 ? current : result;
-		}
-
-		public Result get_result()
-		{
-			return result;
-		}
-	}
-
-	public class MaxVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
-		where Result : IComparable<Result>
-	{
-		IGetTheValueOfAProperty<Element, Result> accessor;
-		Result result;
-
-		public MaxVisitor(IGetTheValueOfAProperty<Element, Result> accessor)
-		{
-			this.accessor = accessor;
-		}
-
-		public void process(Element value)
-		{
-			var current = accessor(value);
-			result = current.CompareTo(result) > 0 ? current : result;
+			result = selector(current, result);
 		}
 
 		public Result get_result()
