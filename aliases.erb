@@ -16,6 +16,7 @@ alias boweri='root;cd source;npm run-script postinstall'
 #
 #Compile aliases
 alias cs='thor compile:selection'
+alias cw='root;thor compile:web compile_units/web.compile'
 alias ccw='root;thor processes:kill iisexpress node;thor automation:clean;cw'
 alias root=ch_root
 alias automation='root;cd automation'
@@ -76,6 +77,12 @@ function start_it_all(){
   continuous_dev
 }
 
+function restart_web_app() {
+  tpkrp
+  ccw
+  _powershell ./start_web_app.bat
+}
+
 function _powershell(){
   start powershell -NoExit -WindowStyle normal -Command $*
 }
@@ -95,6 +102,7 @@ alias web_ui_bare='docker-compose run --rm --no-deps web_ui'
 
 # Workspace bound to the web.ui node docker environment - includes linked environment and service ports
 alias seeder_workspace='docker-compose run --rm seeder /bin/bash'
+
 
 # Command aliases
 alias mix='docker-compose run --rm seeder mix'
@@ -116,6 +124,9 @@ alias rdb='mix ecto.drop && mix ecto.create && mix ecto.migrate;seed'
 
 # Stop all containers started by this folder docker-compose configuration
 alias down='docker-compose down'
+
+# Restart the web app
+alias rwa=restart_web_app
 
 # Utility alias to run on a clean checkout
 function clean_slate() {
