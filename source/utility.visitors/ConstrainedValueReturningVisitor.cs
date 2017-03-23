@@ -1,6 +1,6 @@
 ﻿using code.utility.matching;
 
-namespace code.utility.iteration
+namespace code.utility.visitors
 {
   public class ConstrainedValueReturningVisitor<Element, Value> : IProcessAndReturnAValue<Element, Value>
   {

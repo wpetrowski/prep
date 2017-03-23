@@ -6,6 +6,7 @@ using code.utility.core;
 using code.utility.iteration;
 using code.utility.matching;
 using code.utility.sorting;
+using code.utility.visitors;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.enumerables;
 using developwithpassion.specifications.assertions.type_specificity;

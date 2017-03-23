@@ -2,6 +2,7 @@
 using System.Linq;
 using code.prep.people;
 using code.utility.iteration;
+using code.utility.visitors;
 using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 

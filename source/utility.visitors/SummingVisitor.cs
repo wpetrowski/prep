@@ -1,7 +1,7 @@
 ﻿using System;
 using code.utility.core;
 
-namespace code.utility.iteration
+namespace code.utility.visitors
 {
 	public class ReducingVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
 		where Result : IComparable<Result>

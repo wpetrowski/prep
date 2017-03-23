@@ -1,4 +1,4 @@
-﻿namespace code.utility.iteration
+﻿namespace code.utility.visitors
 {
   public class AvgVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
   {
