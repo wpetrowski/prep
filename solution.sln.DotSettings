@@ -230,7 +230,7 @@ using Machine.Specifications;&#xD;
 }&#xD;
 </s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=contract_005Fimplementation/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=contract_005Fimplementation/Order/@EntryValue">3</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=contract_005Fimplementation/Order/@EntryValue">2</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=filename/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=filename/Expression/@EntryValue">getFileNameWithoutExtension()</s:String>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=filename/InitialRange/@EntryValue">-1</s:Int64>
@@ -242,7 +242,7 @@ using Machine.Specifications;&#xD;
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=namespace/InitialRange/@EntryValue">-1</s:Int64>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=namespace/Order/@EntryValue">0</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=observation_005Fname/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=observation_005Fname/Order/@EntryValue">2</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Field/=observation_005Fname/Order/@EntryValue">3</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Scope/=E8F0594528C33E45BBFEC6CFE851095D/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2109084629CA934EB240BF6F99C62CFD/Scope/=E8F0594528C33E45BBFEC6CFE851095D/Type/@EntryValue">InCSharpProjectFile</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=298BB615C32EE64CBCA3AC9CBC9B8080/@KeyIndexDefined">True</s:Boolean>
@@ -472,7 +472,7 @@ using Machine.Specifications;&#xD;
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/CustomProperties/=ValidateFileName/@EntryIndexedValue">False</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Description/@EntryValue">ObservationsWithContract</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Finterface/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Finterface/Order/@EntryValue">5</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Finterface/Order/@EntryValue">2</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Text/@EntryValue">using developwithpassion.specifications.assertions.core;&#xD;
 using spec = developwithpassion.specifications.use_engine&lt;Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine&gt;;&#xD;
@@ -500,19 +500,19 @@ using Machine.Specifications;&#xD;
 }&#xD;
 </s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Fimplementation/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Fimplementation/Order/@EntryValue">2</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=contract_005Fimplementation/Order/@EntryValue">3</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=filename/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=filename/Expression/@EntryValue">getFileNameWithoutExtension()</s:String>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=filename/InitialRange/@EntryValue">-1</s:Int64>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=filename/Order/@EntryValue">1</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=first_005Fobservation/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=first_005Fobservation/Order/@EntryValue">4</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=first_005Fobservation/Order/@EntryValue">5</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=namespace/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=namespace/Expression/@EntryValue">fileDefaultNamespace()</s:String>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=namespace/InitialRange/@EntryValue">-1</s:Int64>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=namespace/Order/@EntryValue">0</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=observation_005Fname/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=observation_005Fname/Order/@EntryValue">3</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Field/=observation_005Fname/Order/@EntryValue">4</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Scope/=E8F0594528C33E45BBFEC6CFE851095D/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C6A048CCD182D346A4B393807B6B2F08/Scope/=E8F0594528C33E45BBFEC6CFE851095D/Type/@EntryValue">InCSharpProjectFile</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CFEB2FD0141BB743B8A687FFD356C2E0/@KeyIndexDefined">True</s:Boolean>
