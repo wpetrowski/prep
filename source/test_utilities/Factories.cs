@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using code.prep.people;
 using code.utility.matching;
 using Faker;
 
-namespace code.prep.people
+namespace code.test_utilities
 {
   public class Factories
   {
