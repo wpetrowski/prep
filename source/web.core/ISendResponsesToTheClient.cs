@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using code.prep.people;
-
-namespace code.web.core
+﻿namespace code.web.core
 {
   public interface ISendResponsesToTheClient
   {
-    void send(IEnumerable<Person> data);
+    void send<Data>(Data data);
   }
 }

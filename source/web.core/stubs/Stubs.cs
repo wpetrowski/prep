@@ -36,7 +36,7 @@ namespace code.web.core.stubs
 
   public class StubResponseEngine : ISendResponsesToTheClient
   {
-    public void send(IEnumerable<Person> data)
+    public void send<Data>(Data data)
     {
       var context = HttpContext.Current;
       context.Response.ContentType = "application/json";
