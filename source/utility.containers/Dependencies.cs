@@ -11,10 +11,7 @@ namespace code.utility.containers
 
     public static IFetchDependencies fetch
     {
-      get
-      {
-        throw new NotImplementedException();
-      }
+      get { return startup(); }
     }
   }
 }
