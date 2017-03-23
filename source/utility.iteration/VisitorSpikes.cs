@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using code.test_utilities;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
@@ -70,7 +69,7 @@ namespace code.utility.iteration
           new SomeItem {age = 20, cost = 30m},
           new SomeItem {age = 30, cost = 40m},
           new SomeItem {age = 40, cost = 50m}
-        }; 
+        };
       };
 
       protected static List<SomeItem> values;
@@ -85,7 +84,17 @@ namespace code.utility.iteration
         result.ShouldEqual(100);
 
       static int result;
-         
+    }
+
+    public class when_calculating_the_average_of_an_attribute : concern_for_working_with_sets
+    {
+      Because b = () =>
+        result = values.avg(x => x.age);
+
+      It returns_the_sum_of_the_provided_accessor = () =>
+        result.ShouldEqual(25);
+
+      static int result;
     }
   }
 }

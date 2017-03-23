@@ -9,7 +9,14 @@ namespace code.utility.iteration
     public static Result sum<Element, Result>(this IEnumerable<Element> items,
       IGetTheValueOfAProperty<Element, Result> accessor)
     {
-      throw new NotImplementedException();
+      return items.get_result_of_processing_all_with(
+        new SummingVisitor<Element, Result>(accessor,
+          (x, y) =>
+          {
+            dynamic first = x;
+            dynamic second = y;
+            return first + second;
+          }));
 
     }
 
