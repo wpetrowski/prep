@@ -46,7 +46,7 @@ alias tpkrp='thor processes:kill_runner_processes'
 alias fb='thor git:fetch_branch $*;edit'
 alias fl='thor git:fetch_latest $*;edit'
 alias gljp='thor git::get_latest_from_jp;edit'
-alias tfl='git add -A;git stash;thor git:fetch_latest $*;git stash pop;edit'
+alias tfl='git add -A;git stash;thor git:fetch_latest $*;git stash pop;git commit -m "Updated";edit'
 
 #Add, commit, and push your changes to your personal fork
 alias smc='thor work:save_my_changes'
