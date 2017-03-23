@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using code.utility.core;
 using code.utility.iteration;
+using code.utility.matching;
 
 namespace code.utility.visitors
 {
@@ -56,6 +57,14 @@ namespace code.utility.visitors
       IProcessAndReturnAValue<Element, Result> visitor)
     {
       items.process_all_using(visitor);
+      return visitor.get_result();
+    }
+
+    public static Result get_result_of_processing_all_with<Element, Result>(this IEnumerable<Element> items,
+      IProcessAndReturnAValue<Element, Result> visitor, Criteria<Element> constraint)
+    {
+      var constrained = new ConstrainedVisitor<Element>(constraint, visitor);
+      items.process_all_using(constrained);
       return visitor.get_result();
     }
 
