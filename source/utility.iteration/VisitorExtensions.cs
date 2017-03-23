@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using code.utility.core;
 
 namespace code.utility.iteration
@@ -23,7 +24,21 @@ namespace code.utility.iteration
       return items.get_result_of_processing_all_with(create_summing_visitor(accessor));
     }
 
-    public static Result avg<Element, Result>(this IEnumerable<Element> items,
+		public static Result min<Element, Result>(this IEnumerable<Element> items,
+			IGetTheValueOfAProperty<Element, Result> accessor)
+			where Result : IComparable<Result>
+		{
+			return items.get_result_of_processing_all_with(new MinVisitor<Element, Result>(accessor));
+		}
+
+		public static Result max<Element, Result>(this IEnumerable<Element> items,
+			IGetTheValueOfAProperty<Element, Result> accessor)
+			where Result : IComparable<Result>
+		{
+			return items.get_result_of_processing_all_with(new MaxVisitor<Element, Result>(accessor));
+		}
+
+		public static Result avg<Element, Result>(this IEnumerable<Element> items,
       IGetTheValueOfAProperty<Element, Result> accessor)
     {
       return items.get_result_of_processing_all_with(
