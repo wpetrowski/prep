@@ -4,9 +4,18 @@ namespace code.utility.containers
 {
     public class ContainerFacade : IFetchDependencies
     {
-        public void an(Type type)
+        private IFindFactoriesForAType factory_registry;
+
+        public ContainerFacade(IFindFactoriesForAType factory_registry)
         {
-            throw new NotImplementedException();
+            this.factory_registry = factory_registry;
+        }
+
+        public ItemToFetch an<ItemToFetch>()
+        {
+            var factory = factory_registry.get_resolver<ItemToFetch>();
+
+            return factory.create<ItemToFetch>();
         }
     }
 }
