@@ -112,7 +112,8 @@ configure({
     "System.Configuration.dll",
     "System.Data.dll",
     "System.Security.dll",
-    "System.Xml.dll"
+    "System.Xml.dll",
+    "System.Web.dll"
   ],
 
   iis_express: {
@@ -120,7 +121,7 @@ configure({
     present: true,
     enable_in_project_files: true,
     use_for_deploys: true,
-    path: 'e:\utils\iis_express\iisexpress.exe',
+    exe_path: File.expand_path('./automation/tools/iis_express/iisexpress.exe'),
   },
 
   libs: delayed do

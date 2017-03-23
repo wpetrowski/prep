@@ -1,6 +1,5 @@
 module Automation
   class Specs < Thor
-    include ::Automation::Compile::CompileUnitResolution
     namespace :specs
 
     desc 'view', 'view the spec report'
@@ -8,48 +7,37 @@ module Automation
       system "start #{settings.specs.report_dir}/#{settings.project}.specs.html"
     end
 
-    method_option :flags, type: :hash, default: { }
+    desc 'ct', 'start the continuous tester'
+    def continous_test
+      invoke 'tools:start_growl'
+      invoke 'continuous_testing:run_it'
+    end
+
     desc 'run_them','run the specs for the project'
-    def run_them(*compile_files)
-      compile_files.each do |file|
-        compile = ::Automation::Compile::Compile.new
-        unit = get_compile_unit(file)
-        compile.project(file)
-        FileUtils.cp(settings.main_config_file,
-                   "#{unit.output}.config")
+    def run_them
+      invoke 'automation:init'
+      invoke 'compile:rebuild'
+
+      settings.all_references.each do|file|
+        FileUtils.cp(file,settings.artifacts_dir)
       end
 
-      (settings.libs + settings.config_files).each do|file|
-        FileUtils.cp(file, settings.artifacts_dir)
-      end
-
-      flags = default_options.merge(options[:flags])
-
-      line = build_runner_line(settings.specs.flags.merge(flags), settings.specs.assemblies)
+      line = build_runner_line(settings.specs.options, settings.specs.assemblies)
       system(line)
     end
 
     no_commands do
-      def default_options
-        { 
-          "no-teamcity-autodetect" => nil,
-          "no-appveyor-autodetect" => nil,
-          "silent" => nil,
-        }
-      end
+      def build_runner_line(options, assemblies)
+        exe = options.delete(:exe)
 
-      def build_runner_line(flags, assemblies)
-        exe = settings.specs.exe
-
-        parameters = []
-        flags.each do |key, value|
-          parameters << "--#{key}#{value.nil? ? "" : "=#{value}"}" 
+        lines = options.inject([]) do |args, (key, value)|
+          args << "--#{key}=#{value}"
         end
-        parameters = parameters + assemblies
-        command_line = "./#{exe} #{parameters.join(' ')}"
 
-        IO.write("mspec_command.output", command_line)
-        command_line
+        lines.unshift(exe)
+        lines = lines.concat(assemblies)
+
+        "./#{lines.join(' ')}"
       end
     end
   end
