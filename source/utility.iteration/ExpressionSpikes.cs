@@ -3,9 +3,8 @@ using System.Linq.Expressions;
 using code.prep.people;
 using code.test_utilities;
 using code.utility.core;
-using Machine.Specifications;
-using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.extensions;
+using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
 namespace code.utility.iteration
@@ -15,7 +14,6 @@ namespace code.utility.iteration
   {
     public abstract class concern : spec.observe
     {
-
     }
 
     public class when_playing_around_with_expressions : concern
@@ -45,10 +43,9 @@ namespace code.utility.iteration
         Expression<IGetTheValueOfAProperty<Person, string>> code_as_data = x => x.first_name;
 
         code_as_data.Body.downcast_to<MemberExpression>().Member.Name.ShouldEqual("first_name");
-
       };
 
-        private It can_build_an_expression_tree_to_determine_if_a_number_is_even = () =>
+      It can_build_an_expression_tree_to_determine_if_a_number_is_even = () =>
       {
         Func<int, bool> inline = x => x%2 == 0;
 
@@ -58,17 +55,12 @@ namespace code.utility.iteration
         var mod = Expression.Modulo(two, parameter);
         var is_equal = Expression.Equal(mod, zero);
 
-          var lambda = Expression.Lambda<Func<int, bool>>(is_equal, false, parameter);
-
+        var lambda = Expression.Lambda<Func<int, bool>>(is_equal, parameter);
         var instance = lambda.Compile();
         instance(2).ShouldBeTrue();
       };
 
-
       static Person person;
-        
-        
     }
-
   }
 }

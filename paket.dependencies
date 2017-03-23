@@ -9,4 +9,5 @@ nuget developwithpassion.specifications = 0.7.3
 nuget MySql.ConnectorNET.Data = 6.8.3.2
 nuget Faker.Net = 1.0.3
 nuget Newtonsoft.Json = 10.0.1
+nuget Microsoft.CSharp >= 4.0.0
 
