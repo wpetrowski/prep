@@ -4,7 +4,7 @@ namespace code.utility.containers
 {
   public class Dependencies
   {
-    public static ICreateAContainerFacade startup = delegate
+    public static IConfigureTheContainer startup = delegate
     {
       throw new NotImplementedException("This needs to be swapped up by a startup process");
     };

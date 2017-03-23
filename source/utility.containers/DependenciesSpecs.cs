@@ -17,7 +17,7 @@ namespace code.utility.containers
       Establish c = () =>
       {
         the_container_facade = fake.an<IFetchDependencies>();
-        ICreateAContainerFacade startup = () => the_container_facade;
+        IConfigureTheContainer startup = () => the_container_facade;
         spec.change(() => Dependencies.startup).to(startup);
       };
 
