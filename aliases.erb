@@ -50,13 +50,13 @@ alias sra='thor specs:run_them compile_units/all.compile'
 alias tpkrp='thor processes:kill_runner_processes'
 
 #project aliases
-alias fb='thor git:fetch_branch $*'
-alias fl='thor git:fetch_latest $*'
-alias gljp='thor git::get_latest_from_jp'
+alias fb='thor git:fetch_branch $*;edit --compile_unit=compile_unit/all.compile'
+alias fl='thor git:fetch_latest $*;edit --compile_unit=compile_units/all.compile'
+alias gljp='thor git::get_latest_from_jp;edit --compile_unit=compile_units/all.compile'
 alias smc='thor work:save_my_changes'
 alias sne='thor work:start_new_exercise;thor compile:project compile_units/all.compile'
 alias str='thor git:student_remotes'
-alias trash='thor git:trash'
+alias trash='thor git:trash;edit --compile_unit=compile_units/all.compile'
 
 #Initialize the project
 alias rf='bundle install && thor bootstrap:setup && thor startup:configure'
