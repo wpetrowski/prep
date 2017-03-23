@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace code
+namespace code.data.core
 {
   public class QueryGateway
   {

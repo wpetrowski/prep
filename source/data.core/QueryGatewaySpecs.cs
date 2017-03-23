@@ -4,7 +4,7 @@ using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
-namespace code
+namespace code.data.core
 {
   [Subject(typeof(QueryGateway))]
   public class QueryGatewaySpecs
