@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using code.api.v1.people.list.get;
 using code.prep.people;
@@ -41,6 +40,7 @@ namespace code.web.core.stubs
       var context = HttpContext.Current;
       context.Response.ContentType = "application/json";
       var serialize = new JsonSerializer();
+
       using (var writer = new JsonTextWriter(new StreamWriter(context.Response.OutputStream)))
       {
         serialize.Serialize(writer, data);

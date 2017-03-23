@@ -13,15 +13,5 @@ module Automation
       invoke 'compile:project', [compile_unit]
       system("#{project.output}")
     end
-
-    desc 'web', 'Running a web based app'
-    def web(compile_file)
-      invoke 'processes:kill_runner_processes', []
-      invoke 'compile:web'
-      invoke 'automation:expand', []
-
-      system("start start_web_app.bat")
-      system("start #{settings.browser} #{settings.web.start_url}")
-    end
   end
 end
