@@ -18,7 +18,7 @@ namespace code.utility.containers
         {
             private Establish c = () =>
             {
-                registry = fake.an<IProvideResolverForAType>();
+                registry = depends.on<IProvideResolverForAType>();
                 the_type = typeof(object);
             };
             private Because b = () => sut.resolve(the_type);
