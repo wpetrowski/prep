@@ -33,16 +33,21 @@ namespace code.utility.iteration
     {
       Establish c = () =>
       {
-        visitor = fake.an<IProcessAn<int>>();
+        visitor = fake.an<IProcessAndReturnAValue<int, int>>();
+        expected_result = 42;
+        visitor.setup(x => x.get_result()).Return(expected_result);
       };
 
       Because b = () =>
-        Enumerable.Range(1, 10).process_all_using(visitor);
+        result = Enumerable.Range(1, 10).get_result_of_processing_all_with(visitor);
+
+      It uses_the_visitor_to_process_each_item = () =>
+        visitor.should().received(x => x.process(Arg<int>.Is.Anything)).Times(10);
 
       It returns_the_result_of_the_visitor = () =>
         result.ShouldEqual(expected_result);
 
-      static IProcessAn<int> visitor;
+      static IProcessAndReturnAValue<int, int> visitor;
       static int result;
       static int expected_result;
     }
