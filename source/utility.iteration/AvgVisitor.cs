@@ -1,11 +1,8 @@
-﻿using System;
-using code.utility.core;
-
-namespace code.utility.iteration
+﻿namespace code.utility.iteration
 {
   public class AvgVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
   {
-    IProcessAndReturnAValue<Element,Result> summer;
+    IProcessAndReturnAValue<Element, Result> summer;
     int count;
 
     public AvgVisitor(IProcessAndReturnAValue<Element, Result> visitor)
@@ -21,7 +18,7 @@ namespace code.utility.iteration
 
     public Result get_result()
     {
-      return (dynamic)summer.get_result() / count;
+      return (dynamic) summer.get_result()/count;
     }
   }
 }
