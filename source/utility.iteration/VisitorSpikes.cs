@@ -91,8 +91,29 @@ namespace code.utility.iteration
       Because b = () =>
         result = values.avg(x => x.age);
 
-      It returns_the_sum_of_the_provided_accessor = () =>
+      It returns_the_avg_of_the_provided_accessor = () =>
         result.ShouldEqual(25);
+
+      static int result;
+    }
+    public class when_calculating_the_minimum_of_an_attribute : concern_for_working_with_sets
+    {
+      Because b = () =>
+        result = values.min(x => x.age);
+
+      It returns_the_min = () =>
+        result.ShouldEqual(10);
+
+      static int result;
+    }
+
+    public class when_calculating_the_max_of_an_attribute : concern_for_working_with_sets
+    {
+      Because b = () =>
+        result = values.max(x => x.age);
+
+      It returns_the_max = () =>
+        result.ShouldEqual(40);
 
       static int result;
     }
