@@ -134,6 +134,7 @@ function clean_slate() {
   mix deps.get
   mix ecto.create
   mix ecto.migrate
+  seed
 }
 
 <% settings.extra_aliases.each do |the_alias| %>
