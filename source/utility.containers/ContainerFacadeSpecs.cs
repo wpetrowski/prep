@@ -17,7 +17,7 @@ namespace code.utility.containers
     {
       Establish c = () =>
       {
-        registry = depends.on<ICreateAType>();
+        registry = depends.on<IFindFactoriesForAType>();
       };
 
       Because b = () => 
@@ -26,7 +26,7 @@ namespace code.utility.containers
       It tells_the_dependency_registry_to_get_the_factory_for_that_type = () =>
         registry.should().received(x => x.get_resolver_for_type(typeof(Object)));
 
-      static ICreateAType registry;
+      static IFindFactoriesForAType registry;
     }
   }
 }
