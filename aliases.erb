@@ -131,10 +131,7 @@ alias rwa=restart_web_app
 # Utility alias to run on a clean checkout
 function clean_slate() {
   docker-compose run --rm seeder ping -c 1 -W 20000 db
-  mix deps.get
-  mix ecto.create
-  mix ecto.migrate
-  seed
+  rdb
 }
 
 <% settings.extra_aliases.each do |the_alias| %>
