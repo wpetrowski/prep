@@ -3,31 +3,31 @@ using code.utility.core;
 
 namespace code.utility.iteration
 {
-	public class CondensingVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
+	public class ReducingVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
 		where Result : IComparable<Result>
 	{
 		IGetTheValueOfAProperty<Element, Result> accessor;
-		private bool firstResult;
+		Func<Result, Result, Result> reducer;
+		bool first_result;
 		Result result;
-		private Func<Result, Result, Result> selector;
 
-		public CondensingVisitor(IGetTheValueOfAProperty<Element, Result> accessor, Func<Result, Result, Result> selector)
+		public ReducingVisitor(IGetTheValueOfAProperty<Element, Result> accessor, Func<Result, Result, Result> reducer)
 		{
-			this.selector = selector;
+			this.reducer = reducer;
 			this.accessor = accessor;
-			firstResult = true;
+			first_result = true;
 		}
 
 		public void process(Element value)
 		{
 			var current = accessor(value);
-			if (firstResult)
+			if (first_result)
 			{
-				firstResult = false;
+				first_result = false;
 				result = current;
 				return;
 			}
-			result = selector(current, result);
+			result = reducer(current, result);
 		}
 
 		public Result get_result()

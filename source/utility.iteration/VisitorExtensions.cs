@@ -28,7 +28,7 @@ namespace code.utility.iteration
 			IGetTheValueOfAProperty<Element, Result> accessor)
 			where Result : IComparable<Result>
 		{
-			return items.get_result_of_processing_all_with(new CondensingVisitor<Element, Result>(accessor, (a, b) =>
+			return items.get_result_of_processing_all_with(new ReducingVisitor<Element, Result>(accessor, (a, b) =>
 			{
 				return a.CompareTo(b) < 0 ? a : b;
 			}));
@@ -38,7 +38,7 @@ namespace code.utility.iteration
 			IGetTheValueOfAProperty<Element, Result> accessor)
 			where Result : IComparable<Result>
 		{
-			return items.get_result_of_processing_all_with(new CondensingVisitor<Element, Result>(accessor, (a, b) =>
+			return items.get_result_of_processing_all_with(new ReducingVisitor<Element, Result>(accessor, (a, b) =>
 			{
 				return a.CompareTo(b) > 0 ? a : b;
 			}));

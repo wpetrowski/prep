@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using code.prep.people;
+using code.test_utilities;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
@@ -14,6 +18,7 @@ namespace code.utility.iteration
     {
     }
 
+    [Tags(TestTags.slow)]
     public class when_processing_all_of_the_items_in_a_iterator : concern
     {
       Establish c = () =>
@@ -96,6 +101,7 @@ namespace code.utility.iteration
 
       static int result;
     }
+
     public class when_calculating_the_minimum_of_an_attribute : concern_for_working_with_sets
     {
       Because b = () =>
@@ -116,6 +122,59 @@ namespace code.utility.iteration
         result.ShouldEqual(40);
 
       static int result;
+    }
+
+    public class concern_for_working_with_large_sets : concern
+    {
+      Establish c = () =>
+      {
+        values = Factories.generate(300000, x => Factories.create_person()).ToList();
+      };
+
+      public static long time(Action behaviour, int iterations)
+      {
+        var watch = new Stopwatch();
+        watch.Start();
+        Enumerable.Range(1, iterations).each_for_all(x =>
+        {
+          behaviour();
+        });
+
+        watch.Stop();
+
+        return watch.ElapsedTicks;
+      }
+
+
+      public class when_selectively_averaging_the_age_of_people_with_a_certain_profession
+      {
+        It sums_correctly = () =>
+        {
+          var first = time(() =>
+          {
+            var result = values.Where(x => x.profession == Profession.accountant)
+              .Sum(x => x.age);
+          }, 10);
+
+
+          var summing_visitor = VisitorExtensions.create_summing_visitor<Person, int>(x =>  x.age);
+          var constrained = new ConstrainedValueReturningVisitor<Person, int>(x => x.profession == Profession.accountant, summing_visitor);
+
+          var second = time(() =>
+          {
+            var result = values.get_result_of_processing_all_with(constrained);
+          }, 10);
+
+
+          Console.Out.WriteLine("Linq: {0}", first);
+          Console.Out.WriteLine("Visitor: {0}", second);
+          
+          second.ShouldBeLessThan(first);
+        };
+           
+      }
+
+      protected static List<Person> values;
     }
   }
 }
