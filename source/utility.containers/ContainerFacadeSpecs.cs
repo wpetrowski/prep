@@ -20,7 +20,7 @@ namespace code.utility.containers
       {
         registry = depends.on<IFindFactoriesForAType>();
         factory = fake.an<ICreateInstances>();
-        registry.setup(x => x.get_resolver_for_type(Arg<Type>.Is.Anything)).Return(factory);
+        registry.setup(x => x.get_resolver_for_type(Arg<Type>.Is.Equal(typeof(Object)))).Return(factory);
       };
 
       Because b = () => 
