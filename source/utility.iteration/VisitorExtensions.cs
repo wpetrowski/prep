@@ -9,7 +9,8 @@ namespace code.utility.iteration
     public static Result get_result_of_processing_all_with<Element, Result>(this IEnumerable<Element> items,
       IProcessAndReturnAValue<Element, Result> visitor)
     {
-      throw new NotImplementedException(); 
+      items.each_for_all(visitor.process);
+      return visitor.get_result();
     }
 
     public static void process_all_using<Element>(this IEnumerable<Element> items, IProcessAn<Element> visitor)
