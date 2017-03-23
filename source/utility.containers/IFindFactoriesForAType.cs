@@ -2,8 +2,8 @@
 
 namespace code.utility.containers
 {
-    public interface IFindFactoriesForAType
-    {
-        ITypeFactory get_factory<ItemToFetch>();
-    }
+  public interface IFindFactoriesForAType
+  {
+    ICreateOneDependency get_factory_that_can_create(Type item_to_create);
+  }
 }
