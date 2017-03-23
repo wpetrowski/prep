@@ -41,13 +41,20 @@ module Automation
 
 
   class ContinuousTesting < Thor
+    include ::Automation::Compile::CompileUnitResolution
     namespace :continuous_testing
 
+    attr_reader :compile_unit,
+                :compile_file
+
     desc 'run_it', 'start the continuous tester'
-    def run_it
+    def run_it(compile_file)
+      @compile_unit = get_compile_unit(compile_file)
+      @compile_file = compile_file
+
       while true do
         monitor
-        sleep(1)
+        sleep(settings.specs.continuous_testing.interval)
       end
     end
 
@@ -65,6 +72,7 @@ module Automation
             all_files[file] = ChangedFile.new(file)
           end
         end
+
         has_new_files
       end
 
