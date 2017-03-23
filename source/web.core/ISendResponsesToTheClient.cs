@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using code.prep.people;
 
-namespace code.v1.people.list.get
+namespace code.web.core
 {
   public interface ISendResponsesToTheClient
   {

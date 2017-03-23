@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using code.prep.people;
-using code.web;
 using code.web.core;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
-namespace code.v1.people.list.get
+namespace code.api.v1.people.list.get
 {
   [Subject(typeof(Handler))]
   public class HandlerSpecs

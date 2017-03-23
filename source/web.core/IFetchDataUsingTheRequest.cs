@@ -1,7 +1,4 @@
-﻿using code.web;
-using code.web.core;
-
-namespace code.v1.people.list.get
+﻿namespace code.web.core
 {
   public delegate Data IFetchDataUsingTheRequest<Data>(IProvideDetailsAboutAWebRequest request);
 }

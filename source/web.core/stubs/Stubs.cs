@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using code.api.v1.people.list.get;
 using code.prep.people;
-using code.v1.people.list.get;
 using code.web.adapters;
+using Newtonsoft.Json;
 
 namespace code.web.core.stubs
 {
@@ -35,7 +37,13 @@ namespace code.web.core.stubs
   {
     public void send(IEnumerable<Person> data)
     {
-     HttpContext.Current.Response.Write(data.ToString());
+      var context = HttpContext.Current;
+      context.Response.ContentType = "application/json";
+      var serialize = new JsonSerializer();
+      using (var writer = new JsonTextWriter(new StreamWriter(context.Response.OutputStream)))
+      {
+        serialize.Serialize(writer, data);
+      }
     }
   }
 
