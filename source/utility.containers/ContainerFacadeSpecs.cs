@@ -26,9 +26,6 @@ namespace code.utility.containers
       Because b = () => 
         sut.an<IProcessWebRequests>();
 
-//      It tells_the_dependency_registry_to_get_the_factory_for_that_type = () =>
-//        factory_registry.should().received(x => x.get_resolver<object>());
-
         private It tells_the_factory_to_resolve_the_dependency = () =>
             the_type_factory.should().received(x => x.create<IProcessWebRequests>());
         
