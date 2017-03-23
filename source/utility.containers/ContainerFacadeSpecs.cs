@@ -9,7 +9,7 @@ namespace code.utility.containers
     [Subject(typeof(ContainerFacade))]
     public class ContainerFacadeSpecs
     {
-        public abstract class concern : spec.observe
+        public abstract class concern : spec.observe<IFetchDependencies, ContainerFacade>
         {
 
         }
@@ -21,12 +21,11 @@ namespace code.utility.containers
                 registry = fake.an<IProvideResolverForAType>();
                 the_type = typeof(object);
             };
-            private Because b = () => container.resolve(the_type);
+            private Because b = () => sut.resolve(the_type);
 
             private It tells_the_dependency_registry_to_get_the_resolver_for_that_type = () =>
                 registry.should().received(x => x.get_resolver_for_type(the_type));
-
-            static ContainerFacade container;
+            
             static Type the_type;
             static IProvideResolverForAType registry;
         }
