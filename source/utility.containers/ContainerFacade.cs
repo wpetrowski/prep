@@ -4,7 +4,7 @@ namespace code.utility.containers
 {
     public class ContainerFacade : IFetchDependencies
     {
-        public void resolve(Type type)
+        public void an(Type type)
         {
             throw new NotImplementedException();
         }

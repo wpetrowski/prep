@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace code.utility.containers
+﻿namespace code.utility.containers
 {
   public interface IFetchDependencies
   {
-      void resolve(Type type);
+    ItemToFetch an<ItemToFetch>();
   }
 }
