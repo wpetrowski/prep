@@ -82,7 +82,7 @@ namespace code.prep.movies
       static int number_of_movies;
 
       Establish c = () =>
-        Enumerable.Range(1, 2).each(x => movie_collection.Add(new Movie()));
+        Enumerable.Range(1, 2).each_for_all(x => movie_collection.Add(new Movie()));
 
       Because b = () =>
         number_of_movies = sut.all().Count();
