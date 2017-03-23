@@ -58,7 +58,7 @@ namespace code.utility.iteration
         var mod = Expression.Modulo(two, parameter);
         var is_equal = Expression.Equal(mod, zero);
 
-        var lambda = Expression.Lambda<Func<int, bool>>(null, null);
+        var lambda = Expression.Lambda<Func<int, bool>>(is_equal, parameter);
 
         var instance = lambda.Compile();
         instance(2).ShouldBeTrue();
