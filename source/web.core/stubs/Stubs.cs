@@ -24,8 +24,9 @@ namespace code.web.core.stubs
       yield return new RequestHandler(x => true, new Handler());
     }
 
-    public static IFetchDataUsingTheRequest<IEnumerable<Person>> dummy_list_of_people = x =>
-      Enumerable.Range(1, 100).Select(y => new Person());
+    public static IFetchDataUsingTheRequest<IEnumerable<Person>> dummy_list_of_people = x => Factories.generate(200, 
+      y => Factories.create_person());
+      
 
     public static ISendResponsesToTheClient dummy_response_engine()
     {
