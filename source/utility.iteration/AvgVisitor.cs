@@ -5,19 +5,17 @@ namespace code.utility.iteration
 {
   public class AvgVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
   {
-    private readonly SummingVisitor<Element,Result> summer;
+    IProcessAndReturnAValue<Element,Result> summer;
+    int count;
 
-    private int count;
-
-    public AvgVisitor(IGetTheValueOfAProperty<Element, Result> accessor, Func<Result, Result, Result> accumulator)
+    public AvgVisitor(IProcessAndReturnAValue<Element, Result> visitor)
     {
-      summer = new SummingVisitor<Element, Result>(accessor, accumulator);
+      this.summer = visitor;
     }
 
     public void process(Element value)
     {
       summer.process(value);
-
       count++;
     }
 

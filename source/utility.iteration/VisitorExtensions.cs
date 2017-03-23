@@ -5,32 +5,29 @@ namespace code.utility.iteration
 {
   public static class VisitorExtensions
   {
-    public static Result sum<Element, Result>(this IEnumerable<Element> items,
+    public static IProcessAndReturnAValue<Element, Result> create_summing_visitor<Element, Result>(
       IGetTheValueOfAProperty<Element, Result> accessor)
     {
-      return items.get_result_of_processing_all_with(
-        new SummingVisitor<Element, Result>(accessor,
+        return new SummingVisitor<Element, Result>(accessor,
           (x, y) =>
           {
             dynamic first = x;
             dynamic second = y;
             return first + second;
-          }));
-
+          });
+      
+    }
+    public static Result sum<Element, Result>(this IEnumerable<Element> items,
+      IGetTheValueOfAProperty<Element, Result> accessor)
+    {
+      return items.get_result_of_processing_all_with(create_summing_visitor(accessor));
     }
 
     public static Result avg<Element, Result>(this IEnumerable<Element> items,
       IGetTheValueOfAProperty<Element, Result> accessor)
     {
       return items.get_result_of_processing_all_with(
-        new AvgVisitor<Element, Result>(accessor,
-          (x, y) =>
-          {
-            dynamic first = x;
-            dynamic second = y;
-            return first + second;
-          }));
-
+        new AvgVisitor<Element, Result>(create_summing_visitor(accessor)));
     }
 
     public static Result get_result_of_processing_all_with<Element, Result>(this IEnumerable<Element> items,
