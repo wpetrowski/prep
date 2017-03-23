@@ -48,7 +48,7 @@ namespace code.utility.iteration
 
       };
 
-      It can_build_an_expression_tree_to_determine_if_a_number_is_even = () =>
+        private It can_build_an_expression_tree_to_determine_if_a_number_is_even = () =>
       {
         Func<int, bool> inline = x => x%2 == 0;
 
@@ -58,7 +58,7 @@ namespace code.utility.iteration
         var mod = Expression.Modulo(two, parameter);
         var is_equal = Expression.Equal(mod, zero);
 
-        var lambda = Expression.Lambda<Func<int, bool>>(null, null);
+          var lambda = Expression.Lambda<Func<int, bool>>(is_equal, false, parameter);
 
         var instance = lambda.Compile();
         instance(2).ShouldBeTrue();

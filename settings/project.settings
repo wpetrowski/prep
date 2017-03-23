@@ -113,7 +113,8 @@ configure({
     "System.Data.dll",
     "System.Security.dll",
     "System.Xml.dll",
-    "System.Web.dll"
+    "System.Web.dll",
+    "Microsoft.CSharp"
   ],
 
   iis_express: {
